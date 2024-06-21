@@ -9,7 +9,7 @@ const main = async () => {
     {
         year: '2024',
         month: 'June',
-        day: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     },
 ]
  

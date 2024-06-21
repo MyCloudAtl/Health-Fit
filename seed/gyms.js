@@ -1,27 +1,31 @@
 const db = require('../db')
 const { Gym } = require('../models')
+const { Calendar } = require('../models')
+
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
-    
+
+  const currentYear = await Calendar.find({ year:'2024'})
+  
     const gyms = [
       {
-        calendar_id: { type: Schema.Types.ObjectId, ref: 'calendar_id' },
+        calendar_id: currentYear[0]._id,
         sets: '',
         reps: '',
         workoutType: 'Cardio',
         duration: ['15', '30', '45', '60'],
       },
       {
-        calendar_id: { type: Schema.Types.ObjectId, ref: 'calendar_id' },
+        calendar_id: currentYear[0]._id,
         sets: '',
         reps: '',
         workoutType: 'Stretches',
         duration: ['15', '30', '45', '60'],
       },
       {
-        calendar_id: { type: Schema.Types.ObjectId, ref: 'calendar_id' },
+        calendar_id: currentYear[0]._id,
         sets: '',
         reps: '',
         workoutType: 'Weights',
