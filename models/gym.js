@@ -6,7 +6,7 @@ const Gym = new Schema(
     sets: { type: String, required: false },
     reps: { type: String, required: false },
     workoutType: { type: String, required: true },
-    duration: { type: String, required: true },
+    duration: { type: Array, required: true },
   },
   { timestamps: true }
 )
