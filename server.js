@@ -3,9 +3,8 @@ const cors = require('cors')
 const db = require('./db')
 const express = require('express')
 const gymController = require('./controllers/gymController')
-
 const calendarContoller = require('./controllers/calendarController')
-const app = express()
+
 
 
 const logger = require('morgan')
