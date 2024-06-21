@@ -1,5 +1,3 @@
-const express = require('express')
-const db = require('./db')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 const cors = require('cors')
