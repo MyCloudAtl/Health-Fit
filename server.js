@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const logger = require('morgan')
 const cors = require('cors')
 const gymController = require('./controllers/gymController')
+const calendarContoller = require('./controllers/calendarController')
 const app = express()
 
 const PORT = process.env.PORT || 3001
@@ -24,6 +25,8 @@ app.get('/', (req, res) => {
 
 app.get('/gyms', gymController.getGyms)
 app.get('/gyms/:id', gymController.getGym)
+app.get('/calendar', calendarContoller.getCalendars)
+app.get('/calendar/:id', calendarContoller.getCalendar)
 
 module.exports = app
 
