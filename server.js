@@ -1,8 +1,11 @@
+const express = require('express')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 const cors = require('cors')
 const gymController = require('./controllers/gymController')
 const app = express()
+const db = require('./db')
+const nutritionController = require('./controllers/nutritionController')
 
 const PORT = process.env.PORT || 3001
 
