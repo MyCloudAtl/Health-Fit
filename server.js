@@ -3,10 +3,11 @@ const db = require('./db')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 const cors = require('cors')
+const gymController = require('./controllers/gymController')
+const app = express()
 
 const PORT = process.env.PORT || 3001
 
-const app = express()
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(cors())
@@ -20,6 +21,9 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
   res.send('This is our root page!')
 })
+
+app.get('/gyms', gymController.getGyms)
+app.get('/gyms/:id', gymController.getGym)
 
 module.exports = app
 
