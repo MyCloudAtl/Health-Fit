@@ -1,3 +1,5 @@
+const {Gym} = require('../models')
+
 const getGyms = async (req, res) => {
     try {
         const gyms = await Gym.find()
@@ -10,8 +12,8 @@ const getGyms = async (req, res) => {
 const getGym = async(req, res) => {
     try {
         const {id} = req.params
-        const gyms = await Gym.findById(id)
-        res.json(gyms)
+        const gym = await Gym.findById(id)
+        res.json(gym)
     } catch (error) {
         return res.status(500).send(error.message);
     }
