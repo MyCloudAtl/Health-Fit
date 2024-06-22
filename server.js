@@ -7,8 +7,8 @@ const calendarContoller = require('./controllers/calendarController')
 const nutritionController = require('./controllers/nutritionController')
 
 
+
 const logger = require('morgan')
-const nutritionController = require('./controllers/nutritionController')
 
 const PORT = process.env.PORT || 3001
 const app = express()
