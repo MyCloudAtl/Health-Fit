@@ -4,7 +4,7 @@ const db = require('./db')
 const express = require('express')
 const gymController = require('./controllers/gymController')
 const calendarContoller = require('./controllers/calendarController')
-
+const nutritionController = require('./controllers/nutritionController')
 
 
 const logger = require('morgan')
