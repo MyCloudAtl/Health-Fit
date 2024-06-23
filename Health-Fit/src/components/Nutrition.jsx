@@ -58,6 +58,7 @@ const Nutrition = ({addNutrition}) => {
     <div>
     <h1>Nutrition Intake Form</h1>
         <form onSubmit={ handleSubmit }>
+          <h2>Date</h2>
           <h2>Drink</h2>
           <input type="text" value={newNutrition.drink} onChange={handleChange} name={'drink'} placeholder={'drink'} />
           <input type="text" value={newNutrition.ounces} onChange={handleChange} name={'drinkOunces'} placeholder={'ounces'} />

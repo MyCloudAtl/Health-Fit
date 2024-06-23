@@ -10,9 +10,14 @@ import { Link, useNavigate } from 'react-router-dom'
 
 function App() {
   const [nutrition, setNutrition] = useState ([])
+  const [gym,setGym] = useState ([])
  
   const addNutrition = (newNutrition) => {
     setNutrition([...nutrition, newNutrition]);
+  }; 
+
+  const addGym= (newGym) => {
+    setGym([...gym, newGym]);
   }; 
 
   // const addNutrition = (e) => {
@@ -41,8 +46,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/nutrition" element={<Nutrition addNutrition={addNutrition} />} />
           {/* <Route path="/nutrition" element={<Nutrition newNutrition={newNutrition} handleChange={handleChange} addNutrition={addNutrition} />}/> */}
-          <Route path="/gym" element={<Gym />} />
-          <Route path="/calendar" element={<Calendar nutrition={nutrition} />} />     
+          <Route path="/gym" element={<Gym addGym={addGym} />} />
+          <Route path="/calendar" element={<Calendar nutrition={nutrition} gym={gym} />} />     
       </Routes>   
     </main>
     </div>
