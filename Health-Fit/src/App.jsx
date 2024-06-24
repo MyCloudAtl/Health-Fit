@@ -22,16 +22,34 @@ function App() {
       }]);
   };
 
-  const addGym = (newGym) => {
-      setGym([...gym, newGym]);
-      setEvents([...events, {
-          title: `Gym: ${newGym.cardioActivity || newGym.stretchActivity || newGym.weightsActivity}`,
-          start: new Date(newGym.date),
-          end: new Date(newGym.date),
-      }]);
-  };
-  
+  // const addGym = (newGym) => {
+  //     setGym([...gym, newGym]);
+  //     setEvents([...events, {
+  //         title: `Gym: (${newGym.cardioActivity && newGym.cardioHeartRate && newGym.cardioTimeSpent}) || ${newGym.stretchActivity || newGym.weightsActivity}`,
+  //         start: new Date(newGym.date),
+  //         end: new Date(newGym.date),
+  //     }]);
+  // };
 
+  const addGym = (newGym) => {
+    // Check if there's already an event on the same date
+    const existingEvent = events.find(event => 
+        isSameDay(event.start, new Date(newGym.date))
+    );
+
+    if (!existingEvent) {
+        setGym([...gym, newGym]);
+        setEvents([...events, {
+            title: `Cardio Workout: ${newGym.cardioActivity} HR:${newGym.cardioHeartRate} Time: ${newGym.cardioTimeSpent} Stretch Workout: ${newGym.stretchActivity} Flex:${newGym.stretchFlexibilityRate} Time: ${newGym.stretchTimeSpent} Weight Workout: ${newGym.weightsActivity} Reps:${newGym.weightsReps} Sets: ${newGym.weightsSets} Time: ${newGym.weightsTimeSpent}`,
+            start: new Date(newGym.date),
+            end: new Date(newGym.date),
+        }]);
+    } else {
+        // Handle overlapping events (optional)
+        alert(`There's already an event on ${format(new Date(newGym.date), 'MM/dd/yyyy')}`);
+    }
+};
+  
   return (
       <div className="Main">
           <header>
