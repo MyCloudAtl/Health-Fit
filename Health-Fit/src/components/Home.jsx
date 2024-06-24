@@ -10,10 +10,7 @@ const Home = () => {
         <h1>Health-Fit</h1>
         <BigCalendar/>
       </div>
-      {/* <div className="nav">
-        <Link to="/gym">Gym</Link>
-        <Link to="/nutrition">Nutrition</Link>
-      </div> */}
+  
       </div>
     )
   }
