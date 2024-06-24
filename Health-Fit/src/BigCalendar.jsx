@@ -27,7 +27,7 @@ const Calendar = ({ events }) => {
                 events={events}
                 startAccessor="start"
                 endAccessor="end"
-                style={{ height: 500 }}
+                style={{height: '80vh', width: '70vw'}}
                 dayLayoutAlgorithm="no-overlap"
 
             />
