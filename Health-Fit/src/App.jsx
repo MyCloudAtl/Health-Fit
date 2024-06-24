@@ -3,7 +3,6 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Routes, Route} from 'react-router-dom'
 import Home from './components/Home'
-import Calendar from './components/Calendar'
 import Gym from './components/Gym'
 import Nutrition from './components/Nutrition'
 import { Link, useNavigate } from 'react-router-dom'
@@ -47,7 +46,7 @@ function App() {
           <Route path="/nutrition" element={<Nutrition addNutrition={addNutrition} />} />
           {/* <Route path="/nutrition" element={<Nutrition newNutrition={newNutrition} handleChange={handleChange} addNutrition={addNutrition} />}/> */}
           <Route path="/gym" element={<Gym addGym={addGym} />} />
-          <Route path="/calendar" element={<Calendar nutrition={nutrition} gym={gym} />} />     
+          <Route path="/calendar" element={<BigCalendar nutrition={nutrition} gym={gym} />} />     
       </Routes>   
     </main>
     </div>

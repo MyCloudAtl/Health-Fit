@@ -10,7 +10,7 @@ const Gym = ({addGym}) => {
       cardioHeartRate: '',
       cardioTimeSpent: '',
       stretchActivity: '',
-      stretchFlexibiltyRate: '',
+      stretchFlexibilityRate: '',
       stretchTimeSpent: '',
       weightsActivity: '',
       weightsReps: '',
@@ -21,7 +21,7 @@ const Gym = ({addGym}) => {
     const handleSubmit = (e) => {
       e.preventDefault();
       addGym(newGym);
-      navigate('/calendar');
+      navigate('/');
     };
   
     const handleChange = (e) => {
@@ -34,18 +34,18 @@ const Gym = ({addGym}) => {
         <form onSubmit={ handleSubmit }>
           <h2>Date</h2>
           <h2>Cardio</h2>
-          <input type="text" value={newGym.activity} onChange={handleChange} name={'cardioActivity'} placeholder={'activity'} />
-          <input type="text" value={newGym.heartRate} onChange={handleChange} name={'cardioHeartRate'} placeholder={'heartRate'} />
-          <input type="text" value={newGym.timeSpent} onChange={handleChange} name={'cardioTimeSpent'} placeholder={'timeSpent'} />
+          <input type="text" value={newGym.cardioActivity} onChange={handleChange} name={'cardioActivity'} placeholder={'activity'} />
+          <input type="text" value={newGym.cardioHeartRate} onChange={handleChange} name={'cardioHeartRate'} placeholder={'heartRate'} />
+          <input type="text" value={newGym.cardioTimeSpent} onChange={handleChange} name={'cardioTimeSpent'} placeholder={'timeSpent'} />
           <h2>Stretches</h2>
-          <input type="text" value={newGym.activity} onChange={handleChange} name={'stretchActivity'} placeholder={'activity'} />
-          <input type="text" value={newGym.flexibiltyRate} onChange={handleChange} name={'stretchFlexibiltyRate'} placeholder={'flexibiltyRate'} />
-          <input type="text" value={newGym.timeSpent} onChange={handleChange} name={'stretchTimeSpent'} placeholder={'timeSpent'} />
+          <input type="text" value={newGym.stretchActivity} onChange={handleChange} name={'stretchActivity'} placeholder={'activity'} />
+          <input type="text" value={newGym.stretchFlexibilityRate} onChange={handleChange} name={'stretchFlexibilityRate'} placeholder={'flexibilityRate'} />
+          <input type="text" value={newGym.stretchTimeSpent} onChange={handleChange} name={'stretchTimeSpent'} placeholder={'timeSpent'} />
           <h2>Weights</h2>
-          <input type="text" value={newGym.activity} onChange={handleChange} name={'weightsActivity'} placeholder={'activity'} />
-          <input type="text" value={newGym.reps} onChange={handleChange} name={'weightsReps'} placeholder={'reps'} />
-          <input type="text" value={newGym.sets} onChange={handleChange} name={'weightsSets'} placeholder={'sets'} />
-          <input type="text" value={newGym.timeSpent} onChange={handleChange} name={'weightsTimeSpent'} placeholder={'timeSpent'} />
+          <input type="text" value={newGym.weightsActivity} onChange={handleChange} name={'weightsActivity'} placeholder={'activity'} />
+          <input type="text" value={newGym.weightsReps} onChange={handleChange} name={'weightsReps'} placeholder={'reps'} />
+          <input type="text" value={newGym.weightsSets} onChange={handleChange} name={'weightsSets'} placeholder={'sets'} />
+          <input type="text" value={newGym.weightsTimeSpent} onChange={handleChange} name={'weightsTimeSpent'} placeholder={'timeSpent'} />
           <button>Submit</button>
         </form>
     </div>

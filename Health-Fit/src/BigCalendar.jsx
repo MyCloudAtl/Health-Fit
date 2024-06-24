@@ -33,7 +33,7 @@ function BigCalendar () {
             <Calendar 
             localizer={localizer} 
             events={events}
-            startAccessor='start' 
+            startAccessor='start'
             endAccessor='end' 
             style={{height:500, margin:'50px'}}/>
         </div>
