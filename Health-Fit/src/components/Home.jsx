@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import React from "react"
+import BigCalendar from "../BigCalendar.jsx"
 
 const Home = () => {
 
@@ -7,6 +8,7 @@ const Home = () => {
       <div className="home">
           <div>
         <h1>Health-Fit</h1>
+        <BigCalendar/>
       </div>
       {/* <div className="nav">
         <Link to="/gym">Gym</Link>
