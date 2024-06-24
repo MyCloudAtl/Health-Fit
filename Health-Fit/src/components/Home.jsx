@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import React from "react"
-import BigCalendar from "../BigCalendar.jsx"
+import BigCalendar from "../BigCalendar.Jsx"
 
 const Home = () => {
 
