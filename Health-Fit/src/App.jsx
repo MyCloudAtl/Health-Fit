@@ -55,15 +55,15 @@ function App() {
     }]);
   };
 
-  const addGym = (newGym) => {
-    setGym([...gym, newGym]);
-    setEvents([...events, {
-      title: `Gym: ${newGym.cardioActivity || newGym.stretchActivity || newGym.weightsActivity}`,
-      start: new Date(newGym.date),
-      end: new Date(newGym.date),
-    }]);
+const addGym = (newGym) => {
+        setGym([...gym, newGym]);
+        setEvents([...events, {
+            title: `Cardio Workout: ${newGym.cardioActivity} HR:${newGym.cardioHeartRate} Time: ${newGym.cardioTimeSpent} Stretch Workout: ${newGym.stretchActivity} Flex:${newGym.stretchFlexibilityRate} Time: ${newGym.stretchTimeSpent} Weight Workout: ${newGym.weightsActivity} Reps:${newGym.weightsReps} Sets: ${newGym.weightsSets} Time: ${newGym.weightsTimeSpent}`,
+            start: new Date(newGym.date),
+            end: new Date(newGym.date),
+          }]);
   };
-
+  
   return (
     <div className="Main">
       <header>
