@@ -19,10 +19,6 @@ const localizer = dateFnsLocalizer({
 })
 
 const Calendar = ({ events }) => {
-
-    const handleSelectEvent = (event) => {
-        alert(`Selected event: ${event.title}`);
-    }; 
     
     return (
         <div>
@@ -34,7 +30,6 @@ const Calendar = ({ events }) => {
                 endAccessor="end"
                 style={{ height: 500 }}
                 dayLayoutAlgorithm="no-overlap"
-                onSelectEvent={handleSelectEvent}
             />
         </div>
     )
