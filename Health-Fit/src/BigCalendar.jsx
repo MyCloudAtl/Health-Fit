@@ -35,7 +35,7 @@ const Calendar = ({ events }) => {
             events={events}
                 startAccessor="start"
                 endAccessor="end"
-                style={{height: '80vh', width: '70vw'}}
+                style={{height: 500}}
                 dayLayoutAlgorithm="no-overlap"
                 onSelectEvent={handleSelectEvent}
             />
