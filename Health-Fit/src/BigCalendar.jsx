@@ -20,12 +20,6 @@ const localizer = dateFnsLocalizer({
     locales
   })
 
-  const events = [{
-    title: "Blob",
-    allday:true,
-    start: new Date(2024,6,1),
-    end: new Date(2024,6,6)
-}]
 
 const Calendar = ({ events }) => {
     return (

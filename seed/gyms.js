@@ -17,7 +17,7 @@ const resetCollections = async () => {
 
 const main = async () => {
 
-  const user = await User.find()
+  const user = await User.find({})
 
   await resetCollections()
   
