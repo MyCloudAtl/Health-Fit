@@ -1,11 +1,10 @@
-body {
+/*body {
     margin: 0;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f8ff; /* Light blue background */
+    background-color: #f0f8ff; 
 }
 
 .home {
@@ -109,3 +108,6 @@ form button:hover {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+
+*/
+
