@@ -2,11 +2,18 @@ const { Schema } = require('mongoose')
 
 const Gym = new Schema(
   {
-    calendar_id: { type: Schema.Types.ObjectId, ref: 'calendar_id' },
-    sets: { type: String, required: false },
-    reps: { type: String, required: false },
-    workoutType: { type: String, required: true },
-    duration: { type: Array, required: true },
+        user_id: { type: Schema.Types.ObjectId, ref: 'calendar_id' },
+        cardioActivity: { type: String, required: false },
+        cardioHeartRate: { type: String, required: false },
+        cardioTimeSpent: { type: String, required: false },
+        stretchActivity: { type: String, required: false },
+        stretchFlexibiltyRate: { type: String, required: false },
+        stretchTimeSpent: { type: String, required: false },
+        weightsActivity: { type: String, required: false },
+        weightsReps: { type: String, required: false },
+        weightsSets: { type: String, required: false },
+        weightsTimeSpent: { type: String, required: false },
+        date: { type: Date, required: true },
   },
   { timestamps: true }
 )
