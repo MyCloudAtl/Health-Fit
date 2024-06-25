@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react'
+import DatePicker from 'react-datepicker'
 
 function MyVerticallyCenteredModal({show, onHide, newGym}) {
     return (
@@ -77,15 +78,16 @@ function MyVerticallyCenteredModal({show, onHide, newGym}) {
 
 const locales = {
     'en-US': enUS
-}
-
+  }
+  
 const localizer = dateFnsLocalizer({
     format,
     parse,
     startOfWeek,
     getDay,
     locales
-})
+  })
+
 
 const Calendar = ({ events, gym  }) => {
     const [modalShow, setModalShow] = useState(false);
@@ -93,11 +95,11 @@ const Calendar = ({ events, gym  }) => {
         <div>
             <h1>My Calendar</h1>
             <BigCalendar
-                localizer={localizer}
-                events={events}
+            localizer={localizer} 
+            events={events}
                 startAccessor="start"
                 endAccessor="end"
-                style={{ height: 500 }}
+                style={{height: '80vh', width: '70vw'}}
                 dayLayoutAlgorithm="no-overlap"
             />
                  <>
@@ -113,7 +115,7 @@ const Calendar = ({ events, gym  }) => {
     </>
         </div>
     )
-}
+} 
 
 export default Calendar
 
