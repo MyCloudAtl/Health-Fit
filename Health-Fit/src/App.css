@@ -4,7 +4,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f8ff; /* Light blue background */
 }
 
 .home {
