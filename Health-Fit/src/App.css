@@ -1,4 +1,4 @@
-body {
+ body {
     margin: 0;
     font-family: Arial, sans-serif;
     display: flex;
@@ -8,7 +8,7 @@ body {
 
 .home {
     text-align: center;
-}
+} 
 
 h1 {
     font-size: 3em;
