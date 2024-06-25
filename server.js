@@ -9,6 +9,7 @@ const nutritionController = require('./controllers/nutritionController')
 const PORT = process.env.PORT || 3001
 const app = express()
 
+
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(cors())
@@ -23,8 +24,6 @@ app.get('/', (req, res) => {
   res.send('This is our root page!')
 })
 
-module.exports = app
-
 app.get('/gyms', gymController.getGyms)
 app.get('/gyms/:id', gymController.getGym)
 app.get('/calendar', calendarContoller.getCalendars)
@@ -37,3 +36,5 @@ app.delete('/nutrition/:id', nutritionController.deleteNutrition)
 
 
 app.get('*', (req,res) => res.send('404 page not found'))
+
+module.exports = app
