@@ -1,15 +1,14 @@
-body {
+ body {
     margin: 0;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f8ff; /* Light blue background */
 }
 
 .home {
     text-align: center;
-}
+} 
 
 h1 {
     font-size: 3em;
