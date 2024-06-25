@@ -4,8 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f8ff; 
 }
 
 .home {
@@ -108,4 +106,4 @@ form button:hover {
     margin: 5px 0 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
-}
+} 
