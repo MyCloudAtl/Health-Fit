@@ -60,7 +60,7 @@ function MyVerticallyCenteredModal({show, onHide, newGym, newNutrition}) {
             <h5>Snack</h5>
             <p>Type: {newNutrition.snack}</p>
             <p>Oz: {newNutrition.snackOunces}</p>
-            <p>Time: {newNutrition.snackTime}</p>
+            <p>Time:{newNutrition.snackTime}</p>
           </>
         )}
         {!newGym && !newNutrition && <p>No data available.</p>}
