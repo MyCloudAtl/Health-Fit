@@ -1,29 +1,74 @@
 const db = require('../db')
 const { Nutrition } = require('../models')
 const { Calendar } = require('../models')
+const { User } = require('../models')
 
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
+const resetCollections = async () => {
+  try {
+      await Gym.deleteMany({});
+      console.log('All collection reset');
+  } catch (error) {
+      console.error('Error resetting collections:', error);
+  }
+};
+
 const main = async () => {
 
-  const currentYear = await Calendar.find({ year:'2024'})
+  const user = await User.find({})
+
+  await resetCollections()
 
     const nutritions = [
       {
-        calendar_id: currentYear[0]._id,
-        mealType: 'Meals',
-        calories: ['0-50', '50-100', '100-150', '150-200', '200-250', '250-300'],
+        user_id: user[0]._id,
+        drink: '',
+        drinkOunces: '',
+        drinkTime: '',
+        drinkCalories: '',
+        meal: '',
+        mealOunces: '',
+        mealTime: '',
+        mealCalories: '',
+        snack: 'protein bar',
+        snackOunces: '',
+        snackTime: '',
+        snackCalories: '',
+        date: new Date("2024-06-06 10:30:30")
       },
       {
-        calendar_id: currentYear[0]._id,
-        mealType: 'Drinks',
-        calories: ['0-50', '50-100', '100-150', '150-200', '200-250', '250-300'],
+        user_id: user[1]._id,
+        drink: 'water',
+        drinkOunces: '',
+        drinkTime: '',
+        drinkCalories: '',
+        meal: '',
+        mealOunces: '',
+        mealTime: '',
+        mealCalories: '',
+        snack: '',
+        snackOunces: '',
+        snackTime: '',
+        snackCalories: '',
+        date: new Date("2024-06-06 10:30:30")
       },
       {
-        calendar_id: currentYear[0]._id,
-        mealType: 'Snacks',
-        calories: ['0-50', '50-100', '100-150', '150-200', '200-250', '250-300'],
+        user_id: user[2]._id,
+        drink: '',
+        drinkOunces: '',
+        drinkTime: '',
+        drinkCalories: '',
+        meal: 'sandwich',
+        mealOunces: '',
+        mealTime: '',
+        mealCalories: '',
+        snack: '',
+        snackOunces: '',
+        snackTime: '',
+        snackCalories: '',
+        date: new Date("2024-06-06 10:30:30")
       },
      
   ]
