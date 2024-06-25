@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import RegisterForm from './components/RegisterForm'
 
 function MyVerticallyCenteredModal({ show, onHide, event }) {
   return (
@@ -85,7 +86,7 @@ function App() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getData = async () => {
       try {
         const gymRes = await axios.get('http://localhost:3001/gyms');
         const nutritionRes = await axios.get('http://localhost:3001/nutrition');
@@ -113,7 +114,7 @@ function App() {
         console.log(error);
       }
     };
-    fetchData();
+    getData();
   }, []);
 
   const addNutrition = (newNutrition) => {
@@ -127,18 +128,6 @@ function App() {
     }]);
   };
 
-  const addGym = (newGym) => {
-    setGym([...gym, newGym]);
-    setEvents([...events, {
-      title: `${newGym.cardioActivity} ${newGym.stretchActivity} ${newGym.weightsActivity}`,
-      start: new Date(newGym.date),
-      end: new Date(newGym.date),
-      type: 'gym',
-      data: newGym
-    }]);
-  };
-
-
   const handleEventClick = (event) => {
     setSelectedEvent(event);
     setModalShow(true);
@@ -151,6 +140,8 @@ const addGym = (newGym) => {
             title: `Cardio Workout: ${newGym.cardioActivity} HR:${newGym.cardioHeartRate} Time: ${newGym.cardioTimeSpent} Stretch Workout: ${newGym.stretchActivity} Flex:${newGym.stretchFlexibilityRate} Time: ${newGym.stretchTimeSpent} Weight Workout: ${newGym.weightsActivity} Reps:${newGym.weightsReps} Sets: ${newGym.weightsSets} Time: ${newGym.weightsTimeSpent}`,
             start: new Date(newGym.date),
             end: new Date(newGym.date),
+            type: 'gym',
+            data: newGym
 
           }]);
   };
@@ -165,6 +156,7 @@ const addGym = (newGym) => {
           <Link to="/nutrition">Nutrition</Link>
           <Link to="/gym">Gym</Link>
         </nav>
+        <RegisterForm />
       </header>
       <main>
         <Routes>
