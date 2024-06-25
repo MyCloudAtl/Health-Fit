@@ -7,77 +7,77 @@ import Calendar from './BigCalendar'
 import Gym from './components/Gym'
 import Nutrition from './components/Nutrition'
 import { Link } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// import Button from 'react-bootstrap/Button';
+// import Modal from 'react-bootstrap/Modal';
 
-function MyVerticallyCenteredModal({show, onHide, newGym}) {
-  return (
-    <Modal
-      show={show}
-      onHide={onHide}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Daily Log
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-      {newGym ? (
-          <>
-            <h3>Gym</h3>
-            <h5>Cardio</h5>
-            <p>Activity: {newGym.cardioActivity}</p>
-            <p>Heart Rate: {newGym.cardioHeartRate}</p>
-            <p>Time Spent: {newGym.cardioTimeSpent}</p>
-            <h5>Stretches</h5>
-            <p>Activity: {newGym.stretchActivity}</p>
-            <p>Flexibility Rate: {newGym.stretchFlexibilityRate}</p>
-            <p>Time Spent: {newGym.stretchTimeSpent}</p>
-            <h5>Weights</h5>
-            <p>Activity: {newGym.weightsActivity}</p>
-            <p>Reps: {newGym.weightsReps}</p>
-            <p>Sets: {newGym.weightsSets}</p>
-            <p>Time Spent: {newGym.weightsTimeSpent}</p>
-          </>
-        ) : (
-          <p>No gym data available.</p>
-        )}
-        {/* {newNutrition ? (
-          <>
-            <h3>Nutrition</h3>
-            <h5>Drink</h5>
-            <p>{newNutrition.drink}</p>
-            <p>{newNutrition.drinkOunces}</p>
-            <p>{newNutrition.drinkTime}</p>
-            <p>{newNutrition.drinkCalories}</p>
-            <h5>Meal</h5>
-            <p>{newNutrition.meal}</p>
-            <p>{newNutrition.mealOunces}</p>
-            <p>{newNutrition.mealTime}</p>
-            <p>{newNutrition.mealCalories}</p>
-            <h5>Snack</h5>
-            <p>{newNutrition.snack}</p>
-            <p>{newNutrition.snackOunces}</p>
-            <p>{newNutrition.snackTime}</p>
-            <p> {newGym.weightsTimeSpent}</p>
-          </>
-        ) : (
-          <p>No nutrition data available.</p>
-        )} */}
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
+// function MyVerticallyCenteredModal({show, onHide, newGym}) {
+//   return (
+//     <Modal
+//       show={show}
+//       onHide={onHide}
+//       size="lg"
+//       aria-labelledby="contained-modal-title-vcenter"
+//       centered
+//     >
+//       <Modal.Header closeButton>
+//         <Modal.Title id="contained-modal-title-vcenter">
+//           Daily Log
+//         </Modal.Title>
+//       </Modal.Header>
+//       <Modal.Body>
+//       {newGym ? (
+//           <>
+//             <h3>Gym</h3>
+//             <h5>Cardio</h5>
+//             <p>Activity: {newGym.cardioActivity}</p>
+//             <p>Heart Rate: {newGym.cardioHeartRate}</p>
+//             <p>Time Spent: {newGym.cardioTimeSpent}</p>
+//             <h5>Stretches</h5>
+//             <p>Activity: {newGym.stretchActivity}</p>
+//             <p>Flexibility Rate: {newGym.stretchFlexibilityRate}</p>
+//             <p>Time Spent: {newGym.stretchTimeSpent}</p>
+//             <h5>Weights</h5>
+//             <p>Activity: {newGym.weightsActivity}</p>
+//             <p>Reps: {newGym.weightsReps}</p>
+//             <p>Sets: {newGym.weightsSets}</p>
+//             <p>Time Spent: {newGym.weightsTimeSpent}</p>
+//           </>
+//         ) : (
+//           <p>No gym data available.</p>
+//         )}
+//         {/* {newNutrition ? (
+//           <>
+//             <h3>Nutrition</h3>
+//             <h5>Drink</h5>
+//             <p>{newNutrition.drink}</p>
+//             <p>{newNutrition.drinkOunces}</p>
+//             <p>{newNutrition.drinkTime}</p>
+//             <p>{newNutrition.drinkCalories}</p>
+//             <h5>Meal</h5>
+//             <p>{newNutrition.meal}</p>
+//             <p>{newNutrition.mealOunces}</p>
+//             <p>{newNutrition.mealTime}</p>
+//             <p>{newNutrition.mealCalories}</p>
+//             <h5>Snack</h5>
+//             <p>{newNutrition.snack}</p>
+//             <p>{newNutrition.snackOunces}</p>
+//             <p>{newNutrition.snackTime}</p>
+//             <p> {newGym.weightsTimeSpent}</p>
+//           </>
+//         ) : (
+//           <p>No nutrition data available.</p>
+//         )} */}
+//       </Modal.Body>
+//       <Modal.Footer>
+//         <Button onClick={onHide}>Close</Button>
+//       </Modal.Footer>
+//     </Modal>
+//   );
+// }
 
 function App() {
-  const [modalShow, setModalShow] = useState(false);
+  // const [modalShow, setModalShow] = useState(false);
   const [nutrition, setNutrition] = useState([])
   const [gym, setGym] = useState([])
   const [events, setEvents] = useState([])
@@ -114,19 +114,8 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/nutrition" element={<Nutrition addNutrition={addNutrition} />} />
                   <Route path="/gym" element={<Gym addGym={addGym} />} />
-                  <Route path="/calendar" element={<Calendar events={events} />} />
+                  <Route path="/calendar" element={<Calendar events={events} gym={gym}/>} />
               </Routes>
-              <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        See Data
-      </Button>
-
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        newGym={gym[gym.length-1]}
-        />
-    </>
           </main>
       </div>
   )
