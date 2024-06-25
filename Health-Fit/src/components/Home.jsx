@@ -10,7 +10,6 @@ const Home = () => {
         <h1>Health-Fit</h1>
         <BigCalendar/>
       </div>
-  
       </div>
     )
   }

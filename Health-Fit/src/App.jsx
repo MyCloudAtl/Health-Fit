@@ -1,6 +1,6 @@
 import './App.css'
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Calendar from './BigCalendar'
@@ -85,7 +85,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const calendarRes = await axios.get('http://localhost:3001/calendar');
+        // const calendarRes = await axios.get('http://localhost:3001/calendar');
         const gymRes = await axios.get('http://localhost:3001/gyms');
         const nutritionRes = await axios.get('http://localhost:3001/nutrition');
         console.log(gymRes)
