@@ -92,12 +92,13 @@ const Calendar = ({ events, gym  }) => {
     return (
         <div>
             <h1>My Calendar</h1>
+            <h2>Banana</h2>
             <BigCalendar
                 localizer={localizer}
                 events={events}
                 startAccessor="start"
                 endAccessor="end"
-                style={{ height: 500 }}
+                style={{ height: 500 }} 
                 dayLayoutAlgorithm="no-overlap"
             />
                  <>
