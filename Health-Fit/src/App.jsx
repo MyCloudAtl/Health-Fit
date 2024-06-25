@@ -144,19 +144,6 @@ function App() {
     setModalShow(true);
   };
 
-
-const addGym = (newGym) => {
-        setGym([...gym, newGym]);
-        setEvents([...events, {
-            title: `Cardio Workout: ${newGym.cardioActivity} HR:${newGym.cardioHeartRate} Time: ${newGym.cardioTimeSpent} Stretch Workout: ${newGym.stretchActivity} Flex:${newGym.stretchFlexibilityRate} Time: ${newGym.stretchTimeSpent} Weight Workout: ${newGym.weightsActivity} Reps:${newGym.weightsReps} Sets: ${newGym.weightsSets} Time: ${newGym.weightsTimeSpent}`,
-            start: new Date(newGym.date),
-            end: new Date(newGym.date),
-
-          }]);
-  };
-
-  
-
   return (
     <div className="Main">
       <header>

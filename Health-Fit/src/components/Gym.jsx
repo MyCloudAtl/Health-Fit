@@ -21,11 +21,25 @@ const Gym = ({addGym}) => {
       date: new Date()
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
-      addGym(newGym);
-      navigate('/calendar');
-    };
+    //   addGym(newGym);
+    //   navigate('/calendar');
+    // };
+    try {
+      const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+
+      // Make POST request to add new gym data
+      await axios.post('/api/gyms', newGym, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      navigate('/calendar'); // Redirect to calendar or home after submission
+    } catch (error) {
+      console.error('Error adding gym data:', error);
+    }
+  };
   
     const handleChange = (e) => {
       setNewGym({ ...newGym, [e.target.name]: e.target.value });
