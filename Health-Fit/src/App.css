@@ -106,3 +106,7 @@ form button:hover {
     margin: 5px 0 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
+} 
+.header {
+    text-align: center;
+}

@@ -21,6 +21,16 @@ const localizer = dateFnsLocalizer({
 
 
 const Calendar = ({ events, onEventClick }) => {
+
+  const handleLogout = async () => {
+    try {
+        await axios.get('/logout');
+        navigate('/');
+    } catch (error) {
+        console.error('Logout error:', error);
+    }
+    };
+
     return (
         <div>
             <h1>My Calendar</h1>
@@ -33,8 +43,8 @@ const Calendar = ({ events, onEventClick }) => {
                 style={{height: 500}}
                 dayLayoutAlgorithm="no-overlap"
                 onSelectEvent={onEventClick}
-
             />
+            <button onClick={handleLogout}>Logout</button>
         </div>
     )
 } 

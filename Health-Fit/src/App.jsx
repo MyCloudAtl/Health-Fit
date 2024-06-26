@@ -84,6 +84,7 @@ function App() {
   const [nutrition, setNutrition] = useState([]);
   const [gym, setGym] = useState([]);
   const [events, setEvents] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -92,7 +93,7 @@ function App() {
         const nutritionRes = await axios.get('http://localhost:3001/nutrition');
 
         const gymEvents = gymRes.data.map(g => ({
-          title: `${g.cardioActivity} ${g.stretchActivity} ${g.weightsActivity}`,
+          title: `Cardio: ${g.cardioActivity} Stretch: ${g.stretchActivity} Weights: ${g.weightsActivity}`,
           start: new Date(g.date),
           end: new Date(g.date),
           type: 'gym',
@@ -116,6 +117,18 @@ function App() {
     };
     getData();
   }, []);
+
+  useEffect(() => {
+  const fetchCurrentUser = async () => {
+    try {
+        const response = await axios.get('/currentUser');
+        setCurrentUser(response.data);
+    } catch (error) {
+        console.error('Error fetching current user:', error);
+    }
+};
+fetchCurrentUser();
+}, []);
 
   const addNutrition = (newNutrition) => {
     setNutrition([...nutrition, newNutrition]);
@@ -151,16 +164,22 @@ const addGym = (newGym) => {
   return (
     <div className="Main">
       <header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/nutrition">Nutrition</Link>
-          <Link to="/gym">Gym</Link>
+        <nav className='header'>
+          <Link to="/">
+            <button>Home</button>
+          </Link>
+          <Link to="/nutrition">
+            <button>Nutrition</button>
+          </Link>
+          <Link to="/gym">
+            <button>Gym</button>
+          </Link>
         </nav>
         <RegisterForm />
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home currentUser={currentUser} />} />
           <Route path="/nutrition" element={<Nutrition addNutrition={addNutrition} />} />
           <Route path="/gym" element={<Gym addGym={addGym} />} />
           <Route path="/calendar" element={<Calendar events={events} onEventClick={handleEventClick} />} />
