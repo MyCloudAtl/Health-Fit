@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import Logout from "./Logout.jsx";
+
 
 const Gym = ({addGym}) => {
   
@@ -24,23 +25,23 @@ const Gym = ({addGym}) => {
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-    //   addGym(newGym);
-    //   navigate('/calendar');
-    // };
-    try {
-      // Send newGym data to backend (assuming /api/gyms endpoint)
-      await axios.post('/gyms', newGym);
-
-      // Update local state and events
       addGym(newGym);
-
-      // Redirect to calendar page after submission
       navigate('/calendar');
-    } catch (error) {
-      console.error('Error adding gym data:', error);
-      // Handle error, show message to user, etc.
-    }
-  };
+    };
+  //   try {
+  //     // Send newGym data to backend (assuming /api/gyms endpoint)
+  //     await axios.post('/gyms', newGym);
+
+  //     // Update local state and events
+  //     addGym(newGym);
+
+  //     // Redirect to calendar page after submission
+  //     navigate('/calendar');
+  //   } catch (error) {
+  //     console.error('Error adding gym data:', error);
+  //     // Handle error, show message to user, etc.
+  //   }
+  // };
   
     const handleChange = (e) => {
       setNewGym({ ...newGym, [e.target.name]: e.target.value });
@@ -71,6 +72,7 @@ const Gym = ({addGym}) => {
           <input type="text" value={newGym.weightsTimeSpent} onChange={handleChange} name={'weightsTimeSpent'} placeholder={'timeSpent'} />
           <button>Submit</button>
         </form>
+        <Logout />
     </div>
     );
 }

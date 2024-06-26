@@ -13,9 +13,9 @@ const Logout = () => {
             setMessage(response.data.message);
             navigate('/')
         } catch (error) {
-            console.error('Logout error:', error);
+            setMessage('Logout failed. Please try again.');
         }
-        };
+    };
 
     return (
        <div>
@@ -24,4 +24,5 @@ const Logout = () => {
        </div>
     )
 }
-export default Logout
+
+export default Logout;

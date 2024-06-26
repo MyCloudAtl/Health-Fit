@@ -19,7 +19,21 @@ const getGym = async(req, res) => {
     }
 }
 
+const createGym = async (req, res) => {
+    try {
+      const newGym = new Gym({
+        ...req.body,
+        user_id: req.user._id
+      });
+      await newGym.save();
+      res.status(201).json(newGym);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+
 module.exports = {
     getGyms,
     getGym,
+    createGym
 }

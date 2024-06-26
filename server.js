@@ -46,7 +46,6 @@ app.get('/', (req, res) => {
   res.send('This is our root page!')
 })
 
-
 //-----------------Vladimir---------------------//
 app.get('/register', userController.createUser)
 
@@ -138,6 +137,25 @@ app.get('*', (req,res) => res.send('404 page not found'))
         res.status(500).send({ message: 'Registration failed', error });
     }
 });
+
+
+// Login 
+app.post('/login', passport.authenticate('local'), (req, res) => {
+  res.status(200).send({ message: 'Login successful' });
+  console.log("Login successful")
+});
+
+// Logout
+
+app.post('/logout', (req, res) => {
+  req.logout((err) => {
+      if (err) {
+          return res.status(500).send({ message: 'Logout failed', error: err });
+      }
+      res.status(200).send({ message: 'Logout successful' });
+  });
+});
+
 //-------------------------Vladimir------------------------//
 
 ////////

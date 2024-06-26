@@ -84,8 +84,19 @@ function App() {
   const [gym, setGym] = useState([]);
   const [events, setEvents] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
+
+    const fetchUser = async () => {
+      try{
+        const userRes = await axios.get('http://localhost:3001/currentUser')
+        setUser(userRes.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     const getData = async () => {
       try {
         const gymRes = await axios.get('http://localhost:3001/gyms');
