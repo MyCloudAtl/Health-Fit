@@ -27,13 +27,13 @@ h1 {
     text-decoration: none;
     padding: 10px 20px;
     color: white;
-    background-color: #007bff;
+    background-color: #123524;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .nav a:hover {
-    background-color: #0056b3;
+    background-color: #123524;
 }
 
 .Calendar {
@@ -84,8 +84,8 @@ form input {
 form button {
     width: 100%;
     padding: 10px;
-    color: white;
-    background-color: #28a745;
+    color: rgb(150, 180, 152);
+    background-color: #123524;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -93,7 +93,7 @@ form button {
 }
 
 form button:hover {
-    background-color: #218838;
+    background-color: #123524;
 }
 
 .react-datepicker-wrapper {
@@ -106,3 +106,5 @@ form button:hover {
     margin: 5px 0 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
+}
+
