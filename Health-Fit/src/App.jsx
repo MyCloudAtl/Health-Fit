@@ -173,7 +173,7 @@ const addGym = (newGym) => {
 
   return (
     <div className="Main">
-      <header>
+      {/* <header>
         <nav className='header'>
           <Link to="/">
             <button>Home</button>
@@ -185,7 +185,7 @@ const addGym = (newGym) => {
             <button>Gym</button>
           </Link>
         </nav>
-      </header>
+      </header> */}
       <main>
         <Routes>
           <Route path="/" element={<Home currentUser={currentUser} />} />

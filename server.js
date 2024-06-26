@@ -68,7 +68,7 @@ app.put('/users/:id', userController.updateUser)
 app.put('/nutrition/:id', nutritionController.updateNutrition)
 
 app.delete('/nutrition/:id', nutritionController.deleteNutrition)
-
+app.delete('/users/:id', userController.deleteUser)
 
 app.get('*', (req,res) => res.send('404 page not found'))
 
@@ -158,5 +158,37 @@ app.post('/logout', (req, res) => {
 
 //-------------------------Vladimir------------------------//
 
+////////
+app.post('/login', passport.authenticate('local'), (req, res) => {
+  res.status(200).send({ message: 'Login successful' });
+  console.log("Login successful")
+});
 
+// Adjust the authentication logic based on your User model and password validation
+// passport.use(new LocalStrategy(
+//   async (username, password, done) => {
+//     try {
+//       const user = await User.findOne({ username });
+//       if (!user || !user.authenticate(password)) {
+//         return done(null, false, { message: 'Incorrect username or password' });
+//       }
+//       return done(null, user);
+//     } catch (error) {
+//       return done(error);
+//     }
+//   }
+// ));
+
+// Logout
+
+app.post('/logout', (req, res) => {
+  req.logout((err) => {
+      if (err) {
+          return res.status(500).send({ message: 'Logout failed', error: err });
+      }
+      res.status(200).send({ message: 'Logout successful' });
+  });
+});
+
+//////////
 module.exports = app

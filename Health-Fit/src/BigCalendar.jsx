@@ -8,6 +8,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DeleteAccount from './components/DeleteAccount'
 import Logout from './components/Logout'
+import { Link } from 'react-router-dom'
 
 const locales = {
     'en-US': enUS
@@ -21,17 +22,24 @@ const localizer = dateFnsLocalizer({
     locales
   })
 
-//   const handleLogout = (e) => {
-//     e.preventDefault();
-//     navigate('/');
-// };
-
 const Calendar = ({ events, onEventClick }) => {
 
     return (
         <div>
+            <header>
+        <nav className='header'>
+          <Link to="/nutrition">
+            <button>Nutrition</button>
+          </Link>
+          <Link to="/gym">
+            <button>Gym</button>
+          </Link>
+          <div className="Logout">
+            <Logout />
+          </div>
+        </nav>
+      </header>
             <h1>My Calendar</h1>
-            {/* <Logout /> */}
             <BigCalendar
             localizer={localizer} 
             events={events}
@@ -42,7 +50,6 @@ const Calendar = ({ events, onEventClick }) => {
                 onSelectEvent={onEventClick}
             />
             <DeleteAccount/>
-            <Logout />
             {/* <button onClick={handleLogout}>Logout</button> */}
         </div>
     )
