@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import RegisterForm from './components/RegisterForm'
 
 function MyVerticallyCenteredModal({ show, onHide, event }) {
   return (
@@ -175,7 +174,6 @@ const addGym = (newGym) => {
             <button>Gym</button>
           </Link>
         </nav>
-        <RegisterForm />
       </header>
       <main>
         <Routes>
