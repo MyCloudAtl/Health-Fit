@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Calendar from './BigCalendar'
 import Gym from './components/Gym'
 import Nutrition from './components/Nutrition'
+import BMI from './components/BMI'
 import { Link } from 'react-router-dom'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button';
@@ -192,6 +193,7 @@ const addGym = (newGym) => {
           <Route path="/nutrition" element={<Nutrition addNutrition={addNutrition} />} />
           <Route path="/gym" element={<Gym addGym={addGym} />} />
           <Route path="/calendar" element={<Calendar events={events} onEventClick={handleEventClick} />} />
+          <Route path="/BMI" element={<BMI />} />
         </Routes>
       </main>
       <MyVerticallyCenteredModal
