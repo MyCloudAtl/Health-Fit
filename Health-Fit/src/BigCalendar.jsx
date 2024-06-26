@@ -9,7 +9,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import DeleteAccount from './components/DeleteAccount'
 import Logout from './components/Logout'
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import BMI from './components/BMI'
+
 
 const locales = {
     'en-US': enUS
@@ -24,6 +27,33 @@ const localizer = dateFnsLocalizer({
   })
 
 const Calendar = ({ events, onEventClick }) => {
+
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const getUser = async () => {
+      try {
+          const response = await axios.get('http://localhost:3001/currentUser', { withCredentials: true });
+          setUser(response.data);
+          setLoading(false);
+      } catch (error) {
+          console.error('Error fetching user data:', error);
+          setLoading(false);
+      }
+  };
+
+      useEffect(() => {
+        getUser();
+  }, []);
+  if (loading) {
+      return <p>Loading...</p>;
+  }
+
+  if (!user) {
+      return <p>No user data available.</p>;
+  }
+
+
 
     return (
         <div>
@@ -56,7 +86,9 @@ const Calendar = ({ events, onEventClick }) => {
                 dayLayoutAlgorithm="no-overlap"
                 onSelectEvent={onEventClick}
             />
-            <DeleteAccount/>
+            <h1>Welcome, {user.username}</h1>
+            <DeleteAccount userId={user._id}/>
+            <Logout />
             {/* <button onClick={handleLogout}>Logout</button> */}
         </div>
     )
