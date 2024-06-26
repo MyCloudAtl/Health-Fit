@@ -25,6 +25,17 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(cors())
 
+//------------Vladimir--------------------//
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true
+}));
+//-----------Vladimir---------------------//
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.listen(PORT, () => {
@@ -35,8 +46,11 @@ app.get('/', (req, res) => {
   res.send('This is our root page!')
 })
 
-
+//-----------------Vladimir---------------------//
 app.get('/register', userController.createUser)
+
+// app.post('/login', userController.getAllUser)
+//----------------Vladimir---------------------//
 
 app.get('/users', userController.getAllUser)
 app.get('/gyms', gymController.getGyms)
@@ -111,7 +125,7 @@ app.get('*', (req,res) => res.send('404 page not found'))
 //   });
 
 //-------------------------Vladimir------------------------//
-
+// Create or Register new user
   app.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
     try {
@@ -122,6 +136,25 @@ app.get('*', (req,res) => res.send('404 page not found'))
         res.status(500).send({ message: 'Registration failed', error });
     }
 });
+
+
+// Login 
+app.post('/login', passport.authenticate('local'), (req, res) => {
+  res.status(200).send({ message: 'Login successful' });
+  console.log("Login successful")
+});
+
+// Logout
+
+app.post('/logout', (req, res) => {
+  req.logout((err) => {
+      if (err) {
+          return res.status(500).send({ message: 'Logout failed', error: err });
+      }
+      res.status(200).send({ message: 'Logout successful' });
+  });
+});
+
 //-------------------------Vladimir------------------------//
 
 

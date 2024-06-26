@@ -1,18 +1,30 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Navigate, useNavigate } from "react-router-dom";
 
-const Logout = () => {
+
+function Logout() {
+
+    let navigate = useNavigate();
+
+    const [message, setMessage] = useState('');
+
     const handleLogout = async () => {
         try {
-            await axios.get('/logout');
-            navigate('/');
+            const response = await axios.post('http://localhost:3001/logout');
+            setMessage(response.data.message);
+            navigate('/')
         } catch (error) {
-            console.error('Logout error:', error);
+            setMessage('Logout failed. Please try again.');
         }
-        };
+    };
 
     return (
-        <button onClick={handleLogout}>Logout</button>
-    )
+        <div>
+            <button onClick={handleLogout}>Logout</button>
+            {message && <p>{message}</p>}
+        </div>
+    );
 }
-export default Logout
+
+export default Logout;

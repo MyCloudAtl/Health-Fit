@@ -6,6 +6,8 @@ import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Logout from './components/Logout'
+
 
 const locales = {
     'en-US': enUS
@@ -19,6 +21,10 @@ const localizer = dateFnsLocalizer({
     locales
   })
 
+//   const handleLogout = (e) => {
+//     e.preventDefault();
+//     navigate('/');
+// };
 
 const Calendar = ({ events, onEventClick }) => {
 
@@ -35,7 +41,7 @@ const Calendar = ({ events, onEventClick }) => {
                 dayLayoutAlgorithm="no-overlap"
                 onSelectEvent={onEventClick}
             />
-            {/* <Logout /> */}
+            <Logout />
             {/* <button onClick={handleLogout}>Logout</button> */}
         </div>
     )
