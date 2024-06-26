@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
 
     let navigate = useNavigate();
@@ -14,18 +13,29 @@ const Login = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
+    //     const response = await axios.get(`http://localhost:3001/users`, {
+    //       username,
+    //       password
+    //     });
+    //     if (username == response.data.username && password == response.data.password) {
+    //       setMessage(response.data.message);
+    //       console.log('Login successful');
+    //     } else {
+    //       setMessage('Login failed');
+    //       console.log('Login failed');
+    //     }
         const response = await axios.post('http://localhost:3001/login', { username, password });
             setMessage(response.data.message);
             navigate('/calendar');
       } catch (error) {
-        setMessage('Login failed');
-        console.error('Error:', error);
-      }
-    };
+         setMessage('Login failed');
+          console.error('Error:', error);
+          }
+        };
     return (
       <div>
       <h2>Login</h2>
-      <form className='' onSubmit={handleSubmit}>
+      <form className='Login' onSubmit={handleSubmit}>
           <div>
               <label>Username:</label>
               <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
