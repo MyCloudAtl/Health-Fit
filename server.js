@@ -25,6 +25,17 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(cors())
 
+//------------Vladimir--------------------//
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true
+}));
+//-----------Vladimir---------------------//
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.listen(PORT, () => {
@@ -36,7 +47,11 @@ app.get('/', (req, res) => {
 })
 
 
+//-----------------Vladimir---------------------//
 app.get('/register', userController.createUser)
+
+// app.post('/login', userController.getAllUser)
+//----------------Vladimir---------------------//
 
 app.get('/users', userController.getAllUser)
 app.get('/gyms', gymController.getGyms)
@@ -48,12 +63,13 @@ app.get('/gyms/:id', gymController.getGym)
 
 app.post('/users', userController.createUser)
 app.post('/nutrition', nutritionController.createNutrition)
+app.post('/gyms', userController.createUser)
 
 app.put('/users/:id', userController.updateUser)
 app.put('/nutrition/:id', nutritionController.updateNutrition)
 
 app.delete('/nutrition/:id', nutritionController.deleteNutrition)
-
+app.delete('/users/:id', userController.deleteUser)
 
 app.get('*', (req,res) => res.send('404 page not found'))
 
@@ -111,7 +127,7 @@ app.get('*', (req,res) => res.send('404 page not found'))
 //   });
 
 //-------------------------Vladimir------------------------//
-
+// Create or Register new user
   app.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
     try {
@@ -124,5 +140,37 @@ app.get('*', (req,res) => res.send('404 page not found'))
 });
 //-------------------------Vladimir------------------------//
 
+////////
+app.post('/login', passport.authenticate('local'), (req, res) => {
+  res.status(200).send({ message: 'Login successful' });
+  console.log("Login successful")
+});
 
+// Adjust the authentication logic based on your User model and password validation
+// passport.use(new LocalStrategy(
+//   async (username, password, done) => {
+//     try {
+//       const user = await User.findOne({ username });
+//       if (!user || !user.authenticate(password)) {
+//         return done(null, false, { message: 'Incorrect username or password' });
+//       }
+//       return done(null, user);
+//     } catch (error) {
+//       return done(error);
+//     }
+//   }
+// ));
+
+// Logout
+
+app.post('/logout', (req, res) => {
+  req.logout((err) => {
+      if (err) {
+          return res.status(500).send({ message: 'Logout failed', error: err });
+      }
+      res.status(200).send({ message: 'Logout successful' });
+  });
+});
+
+//////////
 module.exports = app

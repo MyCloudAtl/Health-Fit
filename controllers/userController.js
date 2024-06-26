@@ -62,20 +62,33 @@ const updateUser = async (req, res) => {
 
 //delete
 const deleteUser = async (req, res) => {
+    const { id } = req.params;
     try {
-        const { id } = req.params;
-        const erasedObject = await User.findByIdAndDelete(id)
-        if (erasedObject) {
-            return res.status(200).send("User deleted");
-        }
-        throw new Error("User not found and can't be deleted");
+        // Logic to delete user by ID from MongoDB
+        await User.findByIdAndDelete(id);
+        res.status(200).send({ message: 'User deleted successfully' });
     } catch (error) {
-        if (error.name === 'CastError' && error.kind === 'ObjectId') {
-            return res.status(404).send(`That User doesn't exist`)
-        }
-        return res.status(500).send(error.message);
+        res.status(500).send({ message: 'Error deleting user', error });
     }
-}
+};
+
+module.exports = {
+    deleteUser
+};
+//     try {
+//         const { id } = req.params;
+//         const erasedObject = await User.findByIdAndDelete(id)
+//         if (erasedObject) {
+//             return res.status(200).send("User deleted");
+//         }
+//         throw new Error("User not found and can't be deleted");
+//     } catch (error) {
+//         if (error.name === 'CastError' && error.kind === 'ObjectId') {
+//             return res.status(404).send(`That User doesn't exist`)
+//         }
+//         return res.status(500).send(error.message);
+//     }
+// }
 
 module.exports = {
     getAllUser, 
