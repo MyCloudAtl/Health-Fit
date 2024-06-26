@@ -24,7 +24,7 @@ const Login = () => {
     //       setMessage('Login failed');
     //       console.log('Login failed');
     //     }
-        const response = await axios.post('http://localhost:3001/login', { username, password });
+        const response = await axios.post('http://localhost:3001/login', { username, password },{ withCredentials: true });
             setMessage(response.data.message);
             navigate('/calendar');
       } catch (error) {
