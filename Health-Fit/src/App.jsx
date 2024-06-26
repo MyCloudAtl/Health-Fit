@@ -83,15 +83,27 @@ function App() {
   const [nutrition, setNutrition] = useState([]);
   const [gym, setGym] = useState([]);
   const [events, setEvents] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
-    const fetchData = async () => {
+
+    const fetchUser = async () => {
+      try{
+        const userRes = await axios.get('http://localhost:3001/currentUser')
+        setUser(userRes.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    const getData = async () => {
       try {
         const gymRes = await axios.get('http://localhost:3001/gyms');
         const nutritionRes = await axios.get('http://localhost:3001/nutrition');
 
         const gymEvents = gymRes.data.map(g => ({
-          title: `${g.cardioActivity} ${g.stretchActivity} ${g.weightsActivity}`,
+          title: `Cardio: ${g.cardioActivity} Stretch: ${g.stretchActivity} Weights: ${g.weightsActivity}`,
           start: new Date(g.date),
           end: new Date(g.date),
           type: 'gym',
@@ -113,8 +125,20 @@ function App() {
         console.log(error);
       }
     };
-    fetchData();
+    getData();
   }, []);
+
+  useEffect(() => {
+  const fetchCurrentUser = async () => {
+    try {
+        const response = await axios.get('/currentUser');
+        setCurrentUser(response.data);
+    } catch (error) {
+        console.error('Error fetching current user:', error);
+    }
+};
+fetchCurrentUser();
+}, []);
 
   const addNutrition = (newNutrition) => {
     setNutrition([...nutrition, newNutrition]);
@@ -127,35 +151,44 @@ function App() {
     }]);
   };
 
-  const addGym = (newGym) => {
-    setGym([...gym, newGym]);
-    setEvents([...events, {
-      title: `${newGym.cardioActivity} ${newGym.stretchActivity} ${newGym.weightsActivity}`,
-      start: new Date(newGym.date),
-      end: new Date(newGym.date),
-      type: 'gym',
-      data: newGym
-    }]);
-  };
-
-
   const handleEventClick = (event) => {
     setSelectedEvent(event);
     setModalShow(true);
   };
 
+
+const addGym = (newGym) => {
+        setGym([...gym, newGym]);
+        setEvents([...events, {
+            title: `Cardio Workout: ${newGym.cardioActivity} HR:${newGym.cardioHeartRate} Time: ${newGym.cardioTimeSpent} Stretch Workout: ${newGym.stretchActivity} Flex:${newGym.stretchFlexibilityRate} Time: ${newGym.stretchTimeSpent} Weight Workout: ${newGym.weightsActivity} Reps:${newGym.weightsReps} Sets: ${newGym.weightsSets} Time: ${newGym.weightsTimeSpent}`,
+            start: new Date(newGym.date),
+            end: new Date(newGym.date),
+            type: 'gym',
+            data: newGym
+
+          }]);
+  };
+
+  
+
   return (
     <div className="Main">
       <header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/nutrition">Nutrition</Link>
-          <Link to="/gym">Gym</Link>
+        <nav className='header'>
+          <Link to="/">
+            <button>Home</button>
+          </Link>
+          <Link to="/nutrition">
+            <button>Nutrition</button>
+          </Link>
+          <Link to="/gym">
+            <button>Gym</button>
+          </Link>
         </nav>
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home currentUser={currentUser} />} />
           <Route path="/nutrition" element={<Nutrition addNutrition={addNutrition} />} />
           <Route path="/gym" element={<Gym addGym={addGym} />} />
           <Route path="/calendar" element={<Calendar events={events} onEventClick={handleEventClick} />} />

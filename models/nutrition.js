@@ -2,7 +2,7 @@ const { Schema } = require('mongoose')
 
 const Nutrition = new Schema(
     {
-        user_id: { type: Schema.Types.ObjectId, ref: 'calendar_id' },
+        user_id: { type: Schema.Types.ObjectId, ref: 'User_id' },
         drink: { type: String, required: false },
         drinkOunces: { type: String, required: false },
         drinkTime: { type: String, required: false },
