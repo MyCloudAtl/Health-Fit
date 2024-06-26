@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import Logout from "./Logout.jsx";
+
 
 const Nutrition = ({ addNutrition }) => {
     let navigate = useNavigate()
@@ -58,7 +60,11 @@ const Nutrition = ({ addNutrition }) => {
                 <input type="text" value={newNutrition.snackTime} onChange={handleChange} name={'snackTime'} placeholder={'time'} />
                 <input type="text" value={newNutrition.snackCalories} onChange={handleChange} name={'snackCalories'} placeholder={'calories'} />
                 <button>Submit</button>
+                <div>
+               
+                </div>
             </form>
+            <Logout />
         </div>
     );
 }
