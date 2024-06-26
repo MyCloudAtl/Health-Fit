@@ -2,7 +2,7 @@ const { Schema } = require('mongoose')
 
 const Gym = new Schema(
   {
-        user_id: { type: Schema.Types.ObjectId, ref: 'calendar_id' },
+        user_id: { type: Schema.Types.ObjectId, ref: 'User_id' },
         cardioActivity: { type: String, required: false },
         cardioHeartRate: { type: String, required: false },
         cardioTimeSpent: { type: String, required: false },

@@ -81,8 +81,19 @@ function App() {
   const [nutrition, setNutrition] = useState([])
   const [gym, setGym] = useState([])
   const [events, setEvents] = useState([])
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
+
+    const fetchUser = async () => {
+      try{
+        const userRes = await axios.get('http://localhost:3001/currentUser')
+        setUser(userRes.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     const fetchData = async () => {
       try {
         // const calendarRes = await axios.get('http://localhost:3001/calendar');
