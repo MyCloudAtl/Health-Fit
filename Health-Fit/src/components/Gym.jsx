@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
 const Gym = ({addGym}) => {
-    
+  
     let navigate= useNavigate()
-    
+
     const [newGym, setNewGym] = useState({
       cardioActivity: '',
       cardioHeartRate: '',
@@ -21,11 +22,25 @@ const Gym = ({addGym}) => {
       date: new Date()
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
+    //   addGym(newGym);
+    //   navigate('/calendar');
+    // };
+    try {
+      // Send newGym data to backend (assuming /api/gyms endpoint)
+      await axios.post('/gyms', newGym);
+
+      // Update local state and events
       addGym(newGym);
+
+      // Redirect to calendar page after submission
       navigate('/calendar');
-    };
+    } catch (error) {
+      console.error('Error adding gym data:', error);
+      // Handle error, show message to user, etc.
+    }
+  };
   
     const handleChange = (e) => {
       setNewGym({ ...newGym, [e.target.name]: e.target.value });
@@ -38,7 +53,7 @@ const Gym = ({addGym}) => {
     return (
     <div>
     <h1>Gym Intake Form</h1>
-        <form onSubmit={ handleSubmit }>
+        <form onSubmit={handleSubmit}>
           <h2>Date</h2>
           <DatePicker selected={newGym.date} onChange={handleDateChange} />
           <h2>Cardio</h2>
