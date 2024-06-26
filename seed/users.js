@@ -14,26 +14,30 @@ const resetCollections = async () => {
 
 const main = async () => {
 
-    resetCollections()
+    await resetCollections()
 
   const users = [
     {
         username: "liftBrother",
+        _id: "liftBrother",
         email: "liftbrother@yahoo.com",
         password: "password"
     },
     {
         username: "liftsister",
+        _id: "liftsister",
         email: "liftsister@yahoo.com",
         password: "secret"
     },
     {
         username: "liftmama",
+        _id: "liftmama",
         email: "liftmama@yahoo.com",
         password: "secret"
     },
     {
         username: "liftpapa",
+        _id: "liftpapa",
         email: "liftpapa@yahoo.com",
         password: "secret"
     },

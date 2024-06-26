@@ -48,6 +48,7 @@ app.get('/gyms/:id', gymController.getGym)
 
 app.post('/users', userController.createUser)
 app.post('/nutrition', nutritionController.createNutrition)
+app.post('/gyms', userController.createUser)
 
 app.put('/users/:id', userController.updateUser)
 app.put('/nutrition/:id', nutritionController.updateNutrition)
