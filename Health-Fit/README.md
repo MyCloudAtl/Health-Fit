@@ -52,5 +52,5 @@ Future updates could include:
 
 
 
-Credits
-Developed by Alfred Nedohon, Megan Mashburn, Sebastian Cuellar, and Vladimir ?
+Credits:
+Developed by Vladimir Djelovski, Sebastian Cuellar, Megan Mashburn,  and Alfred Nedohon
