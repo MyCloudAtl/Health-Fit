@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import DeleteAccount from './components/DeleteAccount'
 import Logout from './components/Logout'
 import { Link } from 'react-router-dom'
+import BMI from './components/BMI'
 
 const locales = {
     'en-US': enUS
@@ -34,6 +35,12 @@ const Calendar = ({ events, onEventClick }) => {
           <Link to="/gym">
             <button>Gym</button>
           </Link>
+          <Link to="/BMI">
+            <button>BMI</button>
+          </Link>
+          {/* <div className="BMI">
+            <BMI />
+          </div> */}
           <div className="Logout">
             <Logout />
           </div>
