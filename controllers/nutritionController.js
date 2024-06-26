@@ -30,17 +30,15 @@ const getNutritionById = async (req, res) => {
 //create
 const createNutrition = async (req, res) => {
     try {
-        const newObject = await new Nutrition(req.body)
-        await newObject.save()
-        return res.status(201).json({
-            newObject,
+        const newNutrition = new Nutrition({
+          ...req.body,
+          user_id: req.user._id
         });
-    } catch (error) {
-        // if (error.name === 'CastError' && error.kind === 'ObjectId') {
-        //     return res.status(404).send(`That Nutrition doesn't exist`)
-        // }
-        return res.status(500).json({ error: error.message })
-    }
+        await newNutrition.save();
+        res.status(201).json(newNutrition);
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
 }
 
 //update
