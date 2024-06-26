@@ -1,7 +1,6 @@
 import React from "react"
 import RegisterForm from "./RegisterForm.jsx";
-import Logout from "./Logout.jsx";
-import Login from './Login.jsx'
+import Login from './Login.jsx';
 
 const Home = () => {
 
@@ -11,7 +10,6 @@ const Home = () => {
         <h1>Health-Fit</h1>
           <RegisterForm />
           <Login />
-          <Logout />
       </div>
       </div>
     )
