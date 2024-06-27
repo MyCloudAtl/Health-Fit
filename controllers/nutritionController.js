@@ -1,4 +1,5 @@
-const {Nutrition} = require('../models');
+const { Nutrition } = require('../models');
+const { User } = require('../models')
 
 //Read
 const getAllNutrition = async (req, res) => {
@@ -27,21 +28,64 @@ const getNutritionById = async (req, res) => {
     }
 }
 
+// megan added 
+
 //create
 const createNutrition = async (req, res) => {
     try {
-        const newObject = await new Nutrition(req.body)
-        await newObject.save()
-        return res.status(201).json({
-            newObject,
-        });
-    } catch (error) {
-        // if (error.name === 'CastError' && error.kind === 'ObjectId') {
-        //     return res.status(404).send(`That User doesn't exist`)
-        // }
-        return res.status(500).json({ error: error.message })
-    }
+//         console.log(req.user)/*req.useris undefined*/
+//         const newNutrition = new Nutrition({
+//           ...req.body,
+//           user_id: req.user._id
+//         });
+//         await newNutrition.save();
+//         res.status(201).json(newNutrition);
+//       } catch (error) {
+//         res.status(500).json({ error: error.message });
+//       }
+// } try {
+    const {
+        meal,
+        mealOunces,
+        mealTime,
+        mealCalories,
+        snack,
+        snackOunces,
+        snackTime,
+        drink,
+        drinkOunces,
+        drinkTime,
+        drinkCalories,
+        date
+    } = req.body;
+
+    // Create a new Nutrition document
+    const newNutrition = new Nutrition({
+        meal,
+        mealOunces,
+        mealTime,
+        mealCalories,
+        snack,
+        snackOunces,
+        snackTime,
+        drink,
+        drinkOunces,
+        drinkTime,
+        drinkCalories,
+        date,
+        user_id: req.user._id // Assuming you're associating nutrition with a user
+    });
+
+    // Save the new nutrition data to MongoDB
+    await newNutrition.save();
+
+    // Send back a response with the created nutrition object
+    res.status(201).json(newNutrition);
+} catch (error) {
+    console.error('Error creating nutrition:', error);
+    res.status(500).json({ error: error.message });
 }
+};
 
 //update
 const updateNutrition = async (req, res) => {

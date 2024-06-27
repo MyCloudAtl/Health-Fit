@@ -57,7 +57,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #123524;
     background-color: #c41919;
@@ -69,5 +69,8 @@ button:focus-visible {
     color:aliceblue
     background-color: #41b97f;
   }
+} */
+ 
+.rbc-calendar {
+    width: 700px;  
 }
-
