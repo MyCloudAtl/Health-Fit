@@ -30,6 +30,7 @@ const getNutritionById = async (req, res) => {
 //create
 const createNutrition = async (req, res) => {
     try {
+        console.log(req.user)/*req.useris undefined*/
         const newNutrition = new Nutrition({
           ...req.body,
           user_id: req.user._id
