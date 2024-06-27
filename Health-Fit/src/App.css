@@ -36,12 +36,12 @@ h1 {
     background-color: #123524;
 }
 
-.Calendar {
+/* .Calendar {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-}
+} */
 
 .nutrition-card {
     padding: 10px;
@@ -110,8 +110,9 @@ form button:hover {
 
 }
 
-
-
 .header {
-    text-align: center;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+
 }
