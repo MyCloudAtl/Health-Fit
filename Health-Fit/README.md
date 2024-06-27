@@ -60,6 +60,11 @@ Test deployment to ensure all functionalities work in a live environment.
 Trello Board: Use a Trello board to track tasks, goals, and responsibilities for each team member. Define milestones for frontend and backend development, allocate tasks accordingly.
 Git Workflow: Utilize Git for version control with meaningful commit messages. Maintain separate branches for features and merge them via pull requests after code review.
 
+## Wireframe & Diagram:
+* [Lucid ERD/Component](https://lucid.app/lucidchart/685c5c43-f02e-400e-ad44-514a08ea487d/edit?viewport_loc=-33%2C-479%2C2219%2C1061%2C0_0&invitationId=inv_b93ec5cd-b833-4b7d-bb7b-fbe60882eec9)
+* [Lucid Wireframe](https://lucid.app/lucidchart/a378afd9-b738-490a-b79a-ada9dcfa27f5/edit?viewport_loc=-480%2C-465%2C3898%2C1865%2C0_0&invitationId=inv_a89989df-38a3-4d55-b367-0897b8300be5)
+* [Trello](https://trello.com/invite/b/6KR8gZOj/ATTI62d55b2303458b8e47dd5078081f2a3117C6BD45/health-fit-goal)
+
 ## Future Updates:
 <input type="checkbox" checked> Create a function to log BMI
 
@@ -77,5 +82,5 @@ Git Workflow: Utilize Git for version control with meaningful commit messages. M
 | [GitHub](https://github.com/Vladimir1000) | [GitHub](https://github.com/sebcuellar6) |[GitHub](https://github.com/MyCloudAtl) | [GitHub](https://github.com/AlfredNedohon0317) |
 | vladimir.dzelovski@gmail.com | seabasscuellarh@gmail.com | [LinkedIn](https://linkedin.com/in/megan-mashburn-075598194) | [LinkedIn](https://linkedin.com/in/alfred-nedohon-b71342221) |
 
-links to your ERD, Component Diagrams, Wireframes and Trello
+
 screenshots of your final product (no more than 2-3)
