@@ -84,8 +84,8 @@ form input {
 form button {
     width: 100%;
     padding: 10px;
-    color: rgb(150, 180, 152);
-    background-color: #123524;
+    color:aliceblue;
+    background-color: #339465;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -93,7 +93,8 @@ form button {
 }
 
 form button:hover {
-    background-color: #123524;
+    color: black;
+    background-color: rgb(87, 182, 246);
 }
 
 .react-datepicker-wrapper {
