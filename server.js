@@ -14,7 +14,7 @@ const app = express()
 const { User } = require('./models')
 
 
-app.use(cors({credentials: true, origin:'http://localhost:5173'}))
+app.use(cors({credentials: true, origin:'http://localhost:5176'}))
 
 //-------------------------Vladimir------------------------//
 app.use(bodyParser.urlencoded({ extended: true }));

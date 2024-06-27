@@ -68,6 +68,9 @@ const Calendar = ({ events, onEventClick }) => {
           <Link to="/BMI">
             <button>BMI</button>
           </Link>
+          <Link to="/update">
+            <button>Update</button>
+          </Link>
           {/* <div className="BMI">
             <BMI />
           </div> */}

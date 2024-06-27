@@ -9,7 +9,7 @@ import NutritionForm from './components/Nutrition'
 
 import BMI from './components/BMI'
 import { Link } from 'react-router-dom'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -99,7 +99,7 @@ function MyVerticallyCenteredModal({ show, onHide, event }) {
   const handleSaveChanges = async () => {
     try {
       await axios.put(`http://localhost:3001/${editedEvent.type}/${editedEvent.data.id}`, editedEvent.data);
-      onHide(); 
+      onHide();
     } catch (error) {
       console.error('Error updating event:', error);
     }
@@ -293,4 +293,4 @@ const addGym = (newGym) => {
   );
 }
 
-export default App;
+export default App
