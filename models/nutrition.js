@@ -15,7 +15,7 @@ const Nutrition = new Schema(
         snackOunces: { type: String, required: false },
         snackTime: { type: String, required: false },
         snackCalories: { type: String, required: false },
-        date: { type: Date, required: true }
+        date: { type: Date, required: false }
       },
   { timestamps: true }
 )
