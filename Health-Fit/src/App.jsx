@@ -5,7 +5,8 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Calendar from './BigCalendar'
 import Gym from './components/Gym'
-import Nutrition from './components/Nutrition'
+import NutritionForm from './components/Nutrition'
+
 import BMI from './components/BMI'
 import { Link } from 'react-router-dom'
 // import 'bootstrap/dist/css/bootstrap.min.css'
@@ -170,13 +171,14 @@ function App() {
 
   useEffect(() => {
 
-    const fetchUser = async () => {
-      try{
-        const userRes = await axios.get('http://localhost:3001/currentUser')
-        setUser(userRes.data)
-      } catch (error) {
-        console.log(error)
-      }
+    const getUser = async () => {
+      try {
+        const response = await axios.get('/currentUser');
+        setCurrentUser(response.data);
+    } catch (error) {
+        console.error('Error fetching current user:', error);
+    }
+    console.log(currentUser)
     }
 
     const getData = async () => {
@@ -210,29 +212,21 @@ function App() {
     getData();
   }, []);
 
-  useEffect(() => {
-  const fetchCurrentUser = async () => {
-    try {
-        const response = await axios.get('/currentUser');
-        setCurrentUser(response.data);
-    } catch (error) {
-        console.error('Error fetching current user:', error);
-    }
+const addNutrition = async (newNutrition) => {
+  try {
+      await axios.post('http://localhost:3001/nutrition', newNutrition);
+      setNutrition([...nutrition, newNutrition]);
+      setEvents([...events, {
+          title: `Meal: ${newNutrition.meal} Snack: ${newNutrition.snack} Drink: ${newNutrition.drink}`,
+          start: new Date(newNutrition.date),
+          end: new Date(newNutrition.date),
+          type: 'nutrition',
+          data: newNutrition
+      }]);
+  } catch (error) {
+      console.error('Error adding nutrition:', error);
+  }
 };
-fetchCurrentUser();
-}, []);
-
-  const addNutrition = async (newNutrition) => {
-    setNutrition([...nutrition, newNutrition]);
-    setEvents([...events, {
-      title: `Meal: ${newNutrition.meal} Snack: ${newNutrition.snack} Drink: ${newNutrition.drink}`,
-      start: new Date(newNutrition.date),
-      end: new Date(newNutrition.date),
-      type: 'nutrition',
-      data: newNutrition
-    }]);
-    await axios.post('http://localhost:3001/nutrition', {newNutrition})
-  };
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);
@@ -272,7 +266,7 @@ const addGym = (newGym) => {
       <main>
         <Routes>
           <Route path="/" element={<Home currentUser={currentUser} />} />
-          <Route path="/nutrition" element={<Nutrition addNutrition={addNutrition} />} />
+          <Route path="/nutrition" element={<NutritionForm addNutrition={addNutrition} />} />
           <Route path="/gym" element={<Gym addGym={addGym} />} />
           <Route path="/calendar" element={<Calendar events={events} onEventClick={handleEventClick} />} />
           <Route path="/BMI" element={<BMI />} />
