@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import Logout from './Logout';
 
-const NutritionForm = () => {
+const UpdateNutrition = () => {
     const [drink, setDrink] = useState('');
     const [drinkOunces, setDrinkOunces] = useState('');
     const [drinkTime, setDrinkTime] = useState('');
@@ -25,6 +25,7 @@ const NutritionForm = () => {
     const navigate = useNavigate()
 
     const [user_id, setUser_id] = useState(null)
+
 
     useEffect(() => {
         const getUser = async () => {
@@ -106,4 +107,4 @@ const NutritionForm = () => {
     );
 };
 
-export default NutritionForm;
+export default UpdateNutrition;
