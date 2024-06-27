@@ -15,15 +15,12 @@ const NutritionForm = () => {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
-    
-    const [user_id, setUser_id] = useState(null)
 
     useEffect(() => {
         const getUser = async () => {
             try {
                 const response = await axios.get('http://localhost:3001/currentUser', { withCredentials: true });
-                setUser_id(response.data._id);
-                console.log(user_id)
+                setCurrentUser(response.data);
             } catch (error) {
                 console.error('Error fetching user data:', error);
             } finally {
@@ -32,15 +29,12 @@ const NutritionForm = () => {
         };
 
         getUser();
-        
     }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setUser_id(currentUser._id)
 
         const newNutrition = {
-            user_id,
             drink,
             drinkOunces,
             drinkTime,

@@ -13,7 +13,9 @@ const PORT = process.env.PORT || 3001
 const app = express()
 const { User } = require('./models')
 
+
 app.use(cors({credentials: true, origin:'http://localhost:5173'}))
+
 //-------------------------Vladimir------------------------//
 app.use(bodyParser.urlencoded({ extended: true }));
 passport.use(new LocalStrategy(User.authenticate()));
@@ -59,6 +61,8 @@ app.get('/nutrition', nutritionController.getAllNutrition)
 app.get('/users/:id', userController.getUserById)
 app.get('/nutrition/:id', nutritionController.getNutritionById)
 app.get('/gyms/:id', gymController.getGym)
+app.get('/nutrition/user/:user_id', nutritionController.getNutritionByUserId)
+app.get('/gyms/user/:user_id', gymController.getGymByUserId)
 
 app.post('/users', userController.createUser)
 app.post('/nutrition', nutritionController.createNutrition)
