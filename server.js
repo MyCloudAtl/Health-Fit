@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3001
 const app = express()
 const { User } = require('./models')
 
+app.use(cors({credentials: true, origin:'http://localhost:5173'}))
 //-------------------------Vladimir------------------------//
 app.use(bodyParser.urlencoded({ extended: true }));
 passport.use(new LocalStrategy(User.authenticate()));
@@ -23,7 +24,6 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(logger('dev'))
 app.use(bodyParser.json())
-app.use(cors())
 
 //------------Vladimir--------------------//
 app.use(session({
@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
 })
 
 //-----------------Vladimir---------------------//
-app.get('/register', userController.createUser)
+// app.get('/register', userController.createUser)
 
 // app.post('/login', userController.getAllUser)
 //----------------Vladimir---------------------//
@@ -68,9 +68,7 @@ app.put('/users/:id', userController.updateUser)
 app.put('/nutrition/:id', nutritionController.updateNutrition)
 
 app.delete('/nutrition/:id', nutritionController.deleteNutrition)
-app.delete('/users/:id', userController.deleteUser)
 
-app.get('*', (req,res) => res.send('404 page not found'))
 
 // //session setup
 // app.use(session({
@@ -121,9 +119,9 @@ app.get('*', (req,res) => res.send('404 page not found'))
 //     });
 //   })
 
-//   app.get('/currentUser', (req, res) => {
-//     res.json(req.user);
-//   });
+  app.get('/currentUser', (req, res) => {
+    res.json(req.user);
+  });
 
 //-------------------------Vladimir------------------------//
 // Create or Register new user
@@ -139,11 +137,11 @@ app.get('*', (req,res) => res.send('404 page not found'))
 });
 
 
-// Login 
-app.post('/login', passport.authenticate('local'), (req, res) => {
-  res.status(200).send({ message: 'Login successful' });
-  console.log("Login successful")
-});
+// // Login 
+// app.post('/login', passport.authenticate('local'), (req, res) => {
+//   res.status(200).send({ message: 'Login successful' });
+//   console.log("Login successful")
+// });
 
 // Logout
 
@@ -160,8 +158,8 @@ app.post('/logout', (req, res) => {
 
 ////////
 app.post('/login', passport.authenticate('local'), (req, res) => {
-  res.status(200).send({ message: 'Login successful' });
   console.log("Login successful")
+  res.status(200).send({ message: 'Login successful' });
 });
 
 // Adjust the authentication logic based on your User model and password validation
@@ -189,6 +187,30 @@ app.post('/logout', (req, res) => {
       res.status(200).send({ message: 'Logout successful' });
   });
 });
+
+// app.delete('/users/:id', userController.deleteUser)
+
+app.delete('/users/:id', async (req, res) => {
+  const userId = req.params.id
+  const { username, password } = req.body;
+
+  try {
+      // Authenticate user
+      // const user = await User.findOne({ username });
+      // if (!user || !user.authenticate(password)) {
+      //     return res.status(401).json({ message: 'Invalid credentials' });
+      // }
+
+      // Delete user
+      await User.findByIdAndDelete(req.params.id);
+      res.status(200).json({ message: 'Account deleted successfully' });
+  } catch (error) {
+      console.error('Error deleting user:', error);
+      res.status(500).json({ message: 'Failed to delete account', error });
+  }
+});
+
+app.get('*', (req,res) => res.send('404 page not found'))
 
 //////////
 module.exports = app
