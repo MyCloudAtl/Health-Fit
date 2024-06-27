@@ -77,6 +77,87 @@ function MyVerticallyCenteredModal({ show, onHide, event }) {
     </Modal>
   );
 }
+// function MyVerticallyCenteredModal({ show, onHide, event }) {
+//   const [editedEvent, setEditedEvent] = useState(null);
+
+//   useEffect(() => {
+//     setEditedEvent(event);
+//   }, [event]);
+
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setEditedEvent({
+//       ...editedEvent,
+//       data: {
+//         ...editedEvent.data,
+//         [name]: value,
+//       },
+//     });
+//   };
+
+//   const handleSaveChanges = async () => {
+//     try {
+//       await axios.put(`http://localhost:3001/${editedEvent.type}/${editedEvent.data.id}`, editedEvent.data);
+//       onHide(); 
+//     } catch (error) {
+//       console.error('Error updating event:', error);
+//     }
+//   };
+
+//   return (
+//     <Modal
+//       show={show}
+//       onHide={onHide}
+//       size="lg"
+//       aria-labelledby="contained-modal-title-vcenter"
+//       centered
+//     >
+//       <Modal.Header closeButton>
+//         <Modal.Title id="contained-modal-title-vcenter">
+//           Daily Log
+//         </Modal.Title>
+//       </Modal.Header>
+//       <Modal.Body>
+//         {editedEvent ? (
+//           <>
+//             {editedEvent.type === 'gym' && (
+//               <>
+//                 <h3>Gym</h3>
+//                 <h5>Cardio</h5>
+//                 <input
+//                   type="text"
+//                   name="cardioActivity"
+//                   value={editedEvent.data.cardioActivity}
+//                   onChange={handleInputChange}
+//                 />
+//                 {/* Add other input fields for gym */}
+//               </>
+//             )}
+//             {editedEvent.type === 'nutrition' && (
+//               <>
+//                 <h3>Nutrition</h3>
+//                 <h5>Drink</h5>
+//                 <input
+//                   type="text"
+//                   name="drink"
+//                   value={editedEvent.data.drink}
+//                   onChange={handleInputChange}
+//                 />
+//                 {/* Add other input fields for nutrition */}
+//               </>
+//             )}
+//           </>
+//         ) : (
+//           <p>No data available.</p>
+//         )}
+//       </Modal.Body>
+//       <Modal.Footer>
+//         <Button onClick={handleSaveChanges}>Save Changes</Button>
+//         <Button onClick={onHide}>Close</Button>
+//       </Modal.Footer>
+//     </Modal>
+//   );
+// }
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
