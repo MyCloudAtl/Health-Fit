@@ -68,15 +68,12 @@ const Calendar = ({ events, onEventClick }) => {
           <Link to="/BMI">
             <button>BMI</button>
           </Link>
-          {/* <div className="BMI">
-            <BMI />
-          </div> */}
+        </nav>
+              </header>
+            <h1>Welcome back, {user.username}'s calendar</h1>
           <div className="Logout">
             <Logout />
           </div>
-        </nav>
-      </header>
-            <h1>My Calendar</h1>
             <BigCalendar
             localizer={localizer} 
             events={events}
@@ -86,9 +83,7 @@ const Calendar = ({ events, onEventClick }) => {
                 dayLayoutAlgorithm="no-overlap"
                 onSelectEvent={onEventClick}
             />
-            <h1>Welcome, {user.username}</h1>
             <DeleteAccount userId={user._id}/>
-            {/* <button onClick={handleLogout}>Logout</button> */}
         </div>
     )
 } 

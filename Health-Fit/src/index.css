@@ -72,5 +72,8 @@ button:focus-visible {
 } */
  
 .rbc-calendar {
-    width: 700px;  
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  width: 700px; 
 }
