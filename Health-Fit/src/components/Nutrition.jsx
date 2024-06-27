@@ -37,7 +37,6 @@ const NutritionForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setUser_id(currentUser._id)
 
         const newNutrition = {
             user_id,
