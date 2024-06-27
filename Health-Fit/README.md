@@ -9,14 +9,17 @@ Currently, two official plugins are available:
 
 
 ReadMe.md
+
 Project Outline
 Project Name: HealthFit 
 Description: Our web application, HealthFit will allow users to record, store, and manage their personal health intake and goals. Users can upload their daily intake, track their gym activities, set goals, and help them maintain a log of their personal fit life. The application will be integrated with a clean, responsive design with 
 
 Technologies Used:
-Frontend: Axios, CSS3 (Flexbox/Grid),HTML5, React.js, React Router 
-Backend: Express.js, MongoDB (Mongoose), Node.js 
-Tools: Git, GitHub, Trello 
+Frontend: Axios, Bootstrap, CSS3 (Flexbox/Grid), HTML5, React-Bootstrap, React-Big-Calendar(Date-fns & DatePicker) React.js, React Router, Vite
+Middleware: Body-Parser, Morgan, Express-Session
+Backend: CORS, Express.js, MongoDB (Mongoose), Node.js, Passport(Passport-Local & Passport-local-Mongoose) 
+Tools: Git, GitHub, Trello, Lucid 
+
 Project Setup
 Backend Setup:
 Create a new repository for the backend (bookshelf-backend) on GitHub.
@@ -46,6 +49,7 @@ Test deployment to ensure all functionalities work in a live environment.
 Project Management
 Trello Board: Use a Trello board to track tasks, goals, and responsibilities for each team member. Define milestones for frontend and backend development, allocate tasks accordingly.
 Git Workflow: Utilize Git for version control with meaningful commit messages. Maintain separate branches for features and merge them via pull requests after code review.
+
 Future Updates
 Future updates could include:
 
@@ -53,4 +57,7 @@ Future updates could include:
 
 
 Credits:
-Developed by Vladimir Djelovski, Sebastian Cuellar, Megan Mashburn,  and Alfred Nedohon
+Developed by Vladimir Djelovski @https://github.com/Vladimir1000 , Sebastian Cuellar @https://github.com/sebcuellar6 , Megan Mashburn @https://github.com/MyCloudAtl,  and Alfred Nedohon @https://github.com/AlfredNedohon0317
+
+links to your ERD, Component Diagrams, Wireframes and Trello
+screenshots of your final product (no more than 2-3)

@@ -141,7 +141,7 @@ function App() {
 fetchCurrentUser();
 }, []);
 
-  const addNutrition = (newNutrition) => {
+  const addNutrition = async (newNutrition) => {
     setNutrition([...nutrition, newNutrition]);
     setEvents([...events, {
       title: `Meal: ${newNutrition.meal} Snack: ${newNutrition.snack} Drink: ${newNutrition.drink}`,
@@ -150,6 +150,7 @@ fetchCurrentUser();
       type: 'nutrition',
       data: newNutrition
     }]);
+    await axios.post('http://localhost:3001/nutrition', {newNutrition})
   };
 
   const handleEventClick = (event) => {

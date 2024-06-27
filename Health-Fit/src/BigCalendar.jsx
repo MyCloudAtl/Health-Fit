@@ -88,7 +88,6 @@ const Calendar = ({ events, onEventClick }) => {
             />
             <h1>Welcome, {user.username}</h1>
             <DeleteAccount userId={user._id}/>
-            <Logout />
             {/* <button onClick={handleLogout}>Logout</button> */}
         </div>
     )
