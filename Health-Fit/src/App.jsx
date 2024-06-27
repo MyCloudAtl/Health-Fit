@@ -1,19 +1,40 @@
-import './App.css'
-import axios from 'axios'
-import React, { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Home from './components/Home'
-import Calendar from './BigCalendar'
-import Gym from './components/Gym'
-import NutritionForm from './components/Nutrition'
-
-import BMI from './components/BMI'
-import { Link } from 'react-router-dom'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Calendar from './BigCalendar';
+import Gym from './components/Gym';
+import NutritionForm from './components/Nutrition';
+import BMI from './components/BMI';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import UpdateNutrition from './components/UpdateNutrition';
 
-function MyVerticallyCenteredModal({ show, onHide, event }) {
+function MyVerticallyCenteredModal({ show, onHide, event, updateNutrition }) {
+  const [updatedEvent, setUpdatedEvent] = useState(event);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedEvent((prev) => ({
+      ...prev,
+      data: {
+        ...prev.data,
+        [name]: value,
+      },
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateNutrition(updatedEvent);
+    onHide();
+  };
+
+  useEffect(() => {
+    setUpdatedEvent(event);
+  }, [event]);
+
   return (
     <Modal
       show={show}
@@ -28,46 +49,112 @@ function MyVerticallyCenteredModal({ show, onHide, event }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {event ? (
-          <>
-            {event.type === 'gym' && (
-              <>
-                <h3>Gym</h3>
-                <h5>Cardio</h5>
-                <p>Activity: {event.data.cardioActivity}</p>
-                <p>Heart Rate: {event.data.cardioHeartRate}</p>
-                <p>Time Spent: {event.data.cardioTimeSpent}</p>
-                <h5>Stretches</h5>
-                <p>Activity: {event.data.stretchActivity}</p>
-                <p>Flexibility Rate: {event.data.stretchFlexibilityRate}</p>
-                <p>Time Spent: {event.data.stretchTimeSpent}</p>
-                <h5>Weights</h5>
-                <p>Activity: {event.data.weightsActivity}</p>
-                <p>Reps: {event.data.weightsReps}</p>
-                <p>Sets: {event.data.weightsSets}</p>
-                <p>Time Spent: {event.data.weightsTimeSpent}</p>
-              </>
-            )}
-            {event.type === 'nutrition' && (
-              <>
-                <h3>Nutrition</h3>
-                <h5>Drink</h5>
-                <p>Type: {event.data.drink}</p>
-                <p>Oz: {event.data.drinkOunces}</p>
-                <p>Time: {event.data.drinkTime}</p>
-                <p>Calories: {event.data.drinkCalories}</p>
-                <h5>Meal</h5>
-                <p>Type: {event.data.meal}</p>
-                <p>Oz: {event.data.mealOunces}</p>
-                <p>Time: {event.data.mealTime}</p>
-                <p>Calories: {event.data.mealCalories}</p>
-                <h5>Snack</h5>
-                <p>Type: {event.data.snack}</p>
-                <p>Oz: {event.data.snackOunces}</p>
-                <p>Time: {event.data.snackTime}</p>
-              </>
-            )}
-          </>
+        {updatedEvent ? (
+          updatedEvent.type === 'nutrition' && (
+            <Form onSubmit={handleSubmit}>
+              <h3>Nutrition</h3>
+              <Form.Group controlId="formDrink">
+                <Form.Label>Drink</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="drink"
+                  value={updatedEvent.data.drink}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formDrinkOunces">
+                <Form.Label>Oz</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="drinkOunces"
+                  value={updatedEvent.data.drinkOunces}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formDrinkTime">
+                <Form.Label>Time</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="drinkTime"
+                  value={updatedEvent.data.drinkTime}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formDrinkCalories">
+                <Form.Label>Calories</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="drinkCalories"
+                  value={updatedEvent.data.drinkCalories}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formMeal">
+                <Form.Label>Meal</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="meal"
+                  value={updatedEvent.data.meal}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formMealOunces">
+                <Form.Label>Oz</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="mealOunces"
+                  value={updatedEvent.data.mealOunces}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formMealTime">
+                <Form.Label>Time</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="mealTime"
+                  value={updatedEvent.data.mealTime}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formMealCalories">
+                <Form.Label>Calories</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="mealCalories"
+                  value={updatedEvent.data.mealCalories}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formSnack">
+                <Form.Label>Snack</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="snack"
+                  value={updatedEvent.data.snack}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formSnackOunces">
+                <Form.Label>Oz</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="snackOunces"
+                  value={updatedEvent.data.snackOunces}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formSnackTime">
+                <Form.Label>Time</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="snackTime"
+                  value={updatedEvent.data.snackTime}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Button type="submit">Update</Button>
+            </Form>
+          )
         ) : (
           <p>No data available.</p>
         )}
@@ -86,20 +173,21 @@ function App() {
   const [gym, setGym] = useState([]);
   const [events, setEvents] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-  const [user, setUser] = useState(null)
 
   useEffect(() => {
-
-    const getUser = async () => {
+    const getCurrentUser = async () => {
       try {
-        const response = await axios.get('/currentUser');
+        const response = await axios.get('http://localhost:3001/currentUser', { withCredentials: true });
         setCurrentUser(response.data);
-    } catch (error) {
-        console.error('Error fetching current user:', error);
-    }
-    console.log(currentUser)
-    }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
 
+    getCurrentUser();
+  }, []);
+
+  useEffect(() => {
     const getData = async () => {
       try {
         const gymRes = await axios.get('http://localhost:3001/gyms');
@@ -131,57 +219,57 @@ function App() {
     getData();
   }, []);
 
-const addNutrition = async (newNutrition) => {
-  try {
+  const addNutrition = async (newNutrition) => {
+    try {
       await axios.post('http://localhost:3001/nutrition', newNutrition);
       setNutrition([...nutrition, newNutrition]);
       setEvents([...events, {
-          title: `Meal: ${newNutrition.meal} Snack: ${newNutrition.snack} Drink: ${newNutrition.drink}`,
-          start: new Date(newNutrition.date),
-          end: new Date(newNutrition.date),
-          type: 'nutrition',
-          data: newNutrition
+        title: `Meal: ${newNutrition.meal} Snack: ${newNutrition.snack} Drink: ${newNutrition.drink}`,
+        start: new Date(newNutrition.date),
+        end: new Date(newNutrition.date),
+        type: 'nutrition',
+        data: newNutrition
       }]);
-  } catch (error) {
+    } catch (error) {
       console.error('Error adding nutrition:', error);
-  }
-};
+    }
+  };
+
+  const updateNutrition = async (updatedEvent) => {
+    try {
+      const { data } = updatedEvent;
+      await axios.put(`http://localhost:3001/nutrition/${data.id}`, data);
+      const updatedNutrition = nutrition.map(n =>
+        n.id === data.id ? data : n
+      );
+      setNutrition(updatedNutrition);
+      const updatedEvents = events.map(e =>
+        e.data.id === data.id ? { ...e, data } : e
+      );
+      setEvents(updatedEvents);
+    } catch (error) {
+      console.error('Error updating nutrition:', error);
+    }
+  };
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);
     setModalShow(true);
   };
 
-
-const addGym = (newGym) => {
-        setGym([...gym, newGym]);
-        setEvents([...events, {
-            title: `Cardio Workout: ${newGym.cardioActivity} HR:${newGym.cardioHeartRate} Time: ${newGym.cardioTimeSpent} Stretch Workout: ${newGym.stretchActivity} Flex:${newGym.stretchFlexibilityRate} Time: ${newGym.stretchTimeSpent} Weight Workout: ${newGym.weightsActivity} Reps:${newGym.weightsReps} Sets: ${newGym.weightsSets} Time: ${newGym.weightsTimeSpent}`,
-            start: new Date(newGym.date),
-            end: new Date(newGym.date),
-            type: 'gym',
-            data: newGym
-
-          }]);
+  const addGym = (newGym) => {
+    setGym([...gym, newGym]);
+    setEvents([...events, {
+      title: `Cardio Workout: ${newGym.cardioActivity} HR:${newGym.cardioHeartRate} Time: ${newGym.cardioTimeSpent} Stretch Workout: ${newGym.stretchActivity} Flex:${newGym.stretchFlexibilityRate} Time: ${newGym.stretchTimeSpent} Weight Workout: ${newGym.weightsActivity} Reps:${newGym.weightsReps} Sets: ${newGym.weightsSets} Time: ${newGym.weightsTimeSpent}`,
+      start: new Date(newGym.date),
+      end: new Date(newGym.date),
+      type: 'gym',
+      data: newGym
+    }]);
   };
-
-  
 
   return (
     <div className="Main">
-      {/* <header>
-        <nav className='header'>
-          <Link to="/">
-            <button>Home</button>
-          </Link>
-          <Link to="/nutrition">
-            <button>Nutrition</button>
-          </Link>
-          <Link to="/gym">
-            <button>Gym</button>
-          </Link>
-        </nav>
-      </header> */}
       <main>
         <Routes>
           <Route path="/" element={<Home currentUser={currentUser} />} />
@@ -189,15 +277,18 @@ const addGym = (newGym) => {
           <Route path="/gym" element={<Gym addGym={addGym} />} />
           <Route path="/calendar" element={<Calendar events={events} onEventClick={handleEventClick} />} />
           <Route path="/BMI" element={<BMI />} />
+          <Route path='/update' element={<UpdateNutrition />} />
         </Routes>
       </main>
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
         event={selectedEvent}
+        updateNutrition={updateNutrition}
       />
     </div>
   );
 }
 
 export default App;
+
