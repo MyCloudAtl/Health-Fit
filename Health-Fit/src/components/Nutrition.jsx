@@ -68,7 +68,7 @@ const NutritionForm = () => {
         }
 
         try {
-            const response = await axios.put('http://localhost:3001/nutrition', newNutrition);
+            const response = await axios.post('http://localhost:3001/nutrition', newNutrition);
             navigate('/calendar');
         } catch (error) {
             setMessage('Submission failed');
