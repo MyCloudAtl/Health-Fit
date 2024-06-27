@@ -30,10 +30,12 @@ const getNutritionById = async (req, res) => {
 //create
 const createNutrition = async (req, res) => {
     try {
+
         const newObject = await new Nutrition(req.body)
         await newObject.save()
         return res.status(201).json({
             newObject,
+
         });
     } catch (error) {
         // if (error.name === 'CastError' && error.kind === 'ObjectId') {
