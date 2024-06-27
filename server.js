@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
   res.send('This is our root page!')
 })
 
+//comment
 
 app.get('/register', userController.createUser)
 
