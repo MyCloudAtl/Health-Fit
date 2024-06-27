@@ -22,6 +22,7 @@ const NutritionForm = () => {
     const [snackOunces, setSnackOunces] = useState('')
     const [snackTime, setSnackTime] = useState('')
     const [snackCalories, setSnackCalories] = useState('')
+    const [_id, set_id] = useState('')
     const navigate = useNavigate()
 
     const [user_id, setUser_id] = useState(null)

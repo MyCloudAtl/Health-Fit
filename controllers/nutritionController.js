@@ -39,9 +39,9 @@ const createNutrition = async (req, res) => {
             newObject,
         });
     } catch (error) {
-        // if (error.name === 'CastError' && error.kind === 'ObjectId') {
-        //     return res.status(404).send(`That User doesn't exist`)
-        // }
+        if (error.name === 'CastError' && error.kind === 'ObjectId') {
+            return res.status(404).send(`That User doesn't exist`)
+        }
         return res.status(500).json({ error: error.message })
     }
 }
