@@ -25,10 +25,11 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  color: black;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #f0f8ff;
+  background-image: linear-gradient(to bottom right, #544a7d, #44A08D, #f5af19);
 }
 
 h1 {
@@ -40,16 +41,17 @@ button {
   border-radius: 8px;
   color:aliceblue;
   border: 1px solid transparent;
+  width: 105px;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #7e2424;
+  background-color: #0e5253;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: yellow;
   
 }
 button:focus,
@@ -75,5 +77,5 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center; 
-  width: 700px; 
+  /* width: 700px;  */
 }

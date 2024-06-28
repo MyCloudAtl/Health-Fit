@@ -6,7 +6,7 @@ import Home from './components/Home'
 import Calendar from './BigCalendar'
 import Gym from './components/Gym'
 import NutritionForm from './components/Nutrition'
-
+import {useNavigate} from "react-router-dom";
 import BMI from './components/BMI'
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -107,6 +107,21 @@ function MyVerticallyCenteredModal({ show, onHide, event }) {
       console.error('Error updating event:', error);
     }
   };
+  
+   
+  const [message, setMessage] = useState('');
+  const eventDelete = async () => {
+    if (!window.confirm('You are about to delete logged event!? This action cannot be undone.'))
+        return
+        try {
+            const response = await axios.delete(`http://localhost:3001/${editedEvent.type}/${editedEvent.data._id}`, editedEvent.data);
+            setMessage(response.data.message);
+            onHide();
+            window.location.reload()
+        } catch (error) {
+            setMessage(error.response?.data?.message || 'Error deleting event');
+        }
+};
 
   return (
     <Modal
@@ -121,12 +136,12 @@ function MyVerticallyCenteredModal({ show, onHide, event }) {
           Daily Log
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className='modal-body'>
         {editedEvent ? (
           <>
             {editedEvent.type === 'gym' && (
               <>
-                <h3>Gym</h3>
+                <u><h3>Gym</h3></u>
                 <h5>Cardio</h5>
                 <p>Activity: <input type="text" name="cardioActivity" value={editedEvent.data.cardioActivity} onChange={handleInputChange} /></p> 
                 <p>Heart Rate: <input type="text" name="cardioHeartRate" value={editedEvent.data.cardioHeartRate} onChange={handleInputChange} /></p>
@@ -144,7 +159,7 @@ function MyVerticallyCenteredModal({ show, onHide, event }) {
             )}
             {editedEvent.type === 'nutrition' && (
               <>
-                <h3>Nutrition</h3>
+                <u><h4>Nutrition</h4></u>
                 <h5>Drink</h5>
                 <p>Type: <input type="text" name="drink" value={editedEvent.data.drink} onChange={handleInputChange} /></p> 
                 <p>Oz: <input type="text" name="drinkOunces" value={editedEvent.data.drinkOunces} onChange={handleInputChange} /></p>
@@ -167,8 +182,9 @@ function MyVerticallyCenteredModal({ show, onHide, event }) {
           <p>No data available.</p>
         )}
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={handleSaveChanges}>Save Changes</Button>
+      <Modal.Footer className='modalbuttons'>
+        <Button id='Delete' onClick={eventDelete}>Delete</Button>
+        <Button id='Update' onClick={handleSaveChanges}>Update</Button>
         <Button onClick={onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
