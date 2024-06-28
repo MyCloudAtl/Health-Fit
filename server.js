@@ -66,10 +66,11 @@ app.get('/gyms/user/:user_id', gymController.getGymByUserId)
 
 app.post('/users', userController.createUser)
 app.post('/nutrition', nutritionController.createNutrition)
-app.post('/gyms', userController.createUser)
+app.post('/gyms', gymController.createGym)
 
 app.put('/users/:id', userController.updateUser)
 app.put('/nutrition/:id', nutritionController.updateNutrition)
+app.put('/gym/:id', gymController.updateGym)
 
 app.delete('/nutrition/:id', nutritionController.deleteNutrition)
 
