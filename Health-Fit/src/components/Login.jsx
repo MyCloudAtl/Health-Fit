@@ -13,17 +13,6 @@ const Login = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-    //     const response = await axios.get(`http://localhost:3001/users`, {
-    //       username,
-    //       password
-    //     });
-    //     if (username == response.data.username && password == response.data.password) {
-    //       setMessage(response.data.message);
-    //       console.log('Login successful');
-    //     } else {
-    //       setMessage('Login failed');
-    //       console.log('Login failed');
-    //     }
         const response = await axios.post('http://localhost:3001/login', { username, password },{ withCredentials: true });
             setMessage(response.data.message);
             navigate('/calendar');
