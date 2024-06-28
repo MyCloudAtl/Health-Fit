@@ -97,9 +97,11 @@ function MyVerticallyCenteredModal({ show, onHide, event }) {
   };
   
   const handleSaveChanges = async () => {
+    console.log(editedEvent.data)
     console.log(editedEvent)
     try {
       await axios.put(`http://localhost:3001/${editedEvent.type}/${editedEvent.data._id}`, editedEvent.data);
+      
       onHide();
     } catch (error) {
       console.error('Error updating event:', error);
