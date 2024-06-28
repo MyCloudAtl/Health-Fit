@@ -25,7 +25,10 @@ h1 {
     text-shadow: 1px 1px 2px black;
     font-family: "Raleway", sans-serif;
 }
-
+.bmi-answer{
+    background-color:rgba(255, 255, 255, 0.484);
+    text-align:center;
+}
 #Delete {
     background-color: rgb(176, 15, 15);
 }

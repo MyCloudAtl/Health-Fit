@@ -14,13 +14,13 @@ const BMI = () => {
   const calculateAmericanBMI = () => {
     //the formula below was sourced from https://www.geeksforgeeks.org/how-do-you-convert-5-feet-10-inches-into-meters/
       const heightInAmerica = (feet * 0.3048) + (inches * 0.0254)
-      const calculatedAmericanBMI = (weightKg / (heightInAmerica * heightInAmerica));
-      setABMI(calculatedAmericanBMI);
+      const calculatedAmericanBMI = (weightKg / (heightInAmerica * heightInAmerica))
+      setABMI(calculatedAmericanBMI)
   }
   const calculateBMI = () => {
     const heightInMeters = bmiheight / 100;
-    const calculatedBMI = (bmiweight / (heightInMeters * heightInMeters)).toFixed(2);
-    setBMI(calculatedBMI);
+    const calculatedBMI = (bmiweight / (heightInMeters * heightInMeters)).toFixed(2)
+    setBMI(calculatedBMI)
   };
 
   return (
@@ -28,23 +28,32 @@ const BMI = () => {
       <h1>BMI Calculator</h1>
       <header>
       <label>
-        Weight (kg):
+        <h2>Metric System:</h2>
+        Weight (kg):&nbsp;
         <input type="number" value={bmiweight} onChange={(e) => setBMIWeight(e.target.value)} />
-        Height (cm):
+        &nbsp; 
+        Height (cm):&nbsp;
         <input type="number" value={bmiheight} onChange={(e) => setBMIHeight(e.target.value)} />
+        &nbsp; &nbsp;
       <button onClick={calculateBMI}>Calculate</button>
-      {bmi && <p>Your BMI is: {bmi}</p>}
+      <div className="bmi-answer">{bmi && <h4>Your BMI is: {bmi}</h4>}</div>
       </label>
       <br />
       <label>
-        Weight (lbs):
+        <h2>Imperial System:</h2>
+        Weight (lbs):&nbsp;
         <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} />
-        Height (ft):
+        &nbsp; 
+        Height (ft):&nbsp;
+        &nbsp;
         <input type="number" value={feet} onChange={(e) => setFeet(e.target.value)} />
-        Height (in):
+        &nbsp;
+        Height (in):&nbsp;
+        &nbsp; 
         <input type="number" value={inches} onChange={(e) => setInches(e.target.value)} />
+        &nbsp; &nbsp;
         <button onClick={calculateAmericanBMI}>Calculate</button>
-      {abmi && <p>Your BMI is: {abmi}</p>}
+      <div className="bmi-answer">{abmi && <h4>Your BMI is: {abmi}</h4>}</div>
       </label>
       <br />
       </header>
