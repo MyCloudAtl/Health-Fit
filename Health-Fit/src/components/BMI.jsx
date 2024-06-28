@@ -32,7 +32,7 @@ const BMI = () => {
         <input type="number" value={bmiweight} onChange={(e) => setBMIWeight(e.target.value)} />
         Height (cm):
         <input type="number" value={bmiheight} onChange={(e) => setBMIHeight(e.target.value)} />
-      <button onClick={calculateBMI}>Calculate BMI</button>
+      <button onClick={calculateBMI}>Calculate</button>
       {bmi && <p>Your BMI is: {bmi}</p>}
       </label>
       <br />
@@ -43,21 +43,21 @@ const BMI = () => {
         <input type="number" value={feet} onChange={(e) => setFeet(e.target.value)} />
         Height (in):
         <input type="number" value={inches} onChange={(e) => setInches(e.target.value)} />
-        <button onClick={calculateAmericanBMI}>Calculate BMI</button>
+        <button onClick={calculateAmericanBMI}>Calculate</button>
       {abmi && <p>Your BMI is: {abmi}</p>}
       </label>
       <br />
       </header>
       <main>
-      <h2>Adults</h2>
-      <h3>Women</h3>
+      <u><h2>Adults</h2></u>
+      <h3>Women:</h3>
       <p>Anorexia : Less than 17.50</p>	
       <p>Underweight : 17.51-19.10</p>
       <p>Ideal range : 19.11-25.80</p>
       <p>Marginally overweight range : 25.81-27.30</p>
       <p>Overweight range : 27.31-32.30</p>
       <p>Obese range : More than 32.30</p>
-      <h3>Men</h3>
+      <h3>Men:</h3>
       <p>Anorexia : Less than 17.50</p>	
       <p>Underweight : 17.501-20.70</p>
       <p>Ideal range : 20.71-26.40</p>

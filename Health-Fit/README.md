@@ -1,14 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-ReadMe.md
-
 # Project Name: Health-Fit
 
 ### <u><span style="color:green">Description:</span></u>
@@ -78,7 +67,7 @@ Git Workflow: Utilize Git for version control with meaningful commit messages. M
 ## <u><span style="color:green">Credits:</span><u>
 | Vladimir Djelovski | Sebastian Cuellar | Megan Mashburn | Alfred Nedohon |
 | -------- | -------- | -------- | -------- |
-| Row 2, Col 1 | Row 2, Col 2 |<img src="https://media.licdn.com/dms/image/D4E03AQH4rwyr782Tmw/profile-displayphoto-shrink_100_100/0/1666873482466?e=1724889600&v=beta&t=wC37oAv-46pdCTJ46NYmyaTYcPuMlEup-Nud37X0CAY"/> |<img src=""/> |
+| Image Vlad | Image Sebastian |<img src="https://media.licdn.com/dms/image/D4E03AQH4rwyr782Tmw/profile-displayphoto-shrink_100_100/0/1666873482466?e=1724889600&v=beta&t=wC37oAv-46pdCTJ46NYmyaTYcPuMlEup-Nud37X0CAY"/> | Image Alfred |
 | [GitHub](https://github.com/Vladimir1000) | [GitHub](https://github.com/sebcuellar6) |[GitHub](https://github.com/MyCloudAtl) | [GitHub](https://github.com/AlfredNedohon0317) |
 | vladimir.dzelovski@gmail.com | seabasscuellarh@gmail.com | [LinkedIn](https://linkedin.com/in/megan-mashburn-075598194) | [LinkedIn](https://linkedin.com/in/alfred-nedohon-b71342221) |
 

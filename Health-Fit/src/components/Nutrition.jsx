@@ -85,15 +85,17 @@ const NutritionForm = () => {
             <form onSubmit={handleSubmit}>
                 <h2>Date</h2>
                 <DatePicker selected={date} onChange={(date) => setDate(date)} />
-                <h2>Drink</h2>
+                <h2>Drink:</h2>
                 <input type="text" value={drink} onChange={(e) => setDrink(e.target.value)} name="drink" placeholder="Drink" />
                 <input type="text" value={drinkOunces} onChange={(e) => setDrinkOunces(e.target.value)} name="drinkOunces" placeholder="Ounces" />
                 <input type="text" value={drinkTime} onChange={(e) => setDrinkTime(e.target.value)} name="drinkTime" placeholder="Time" />
                 <input type="text" value={drinkCalories} onChange={(e) => setDrinkCalories(e.target.value)} name="drinkCalories" placeholder="Calories" />
+                <h2>Snack:</h2>
                 <input type="text" value={snack} onChange={(e) => setSnack(e.target.value)} name="snack" placeholder="snack" />
                 <input type="text" value={snackOunces} onChange={(e) => setSnackOunces(e.target.value)} name="snackOunces" placeholder="Ounces" />
                 <input type="text" value={snackTime} onChange={(e) => setSnackTime(e.target.value)} name="snackTime" placeholder="Time" />
                 <input type="text" value={snackCalories} onChange={(e) => setSnackCalories(e.target.value)} name="snackCalories" placeholder="Calories" />
+                <h2>Meal:</h2>
                 <input type="text" value={meal} onChange={(e) => setMeal(e.target.value)} name="meal" placeholder="meal" />
                 <input type="text" value={mealOunces} onChange={(e) => setMealOunces(e.target.value)} name="mealOunces" placeholder="Ounces" />
                 <input type="text" value={mealTime} onChange={(e) => setMealTime(e.target.value)} name="mealTime" placeholder="Time" />

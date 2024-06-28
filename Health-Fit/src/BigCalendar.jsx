@@ -70,7 +70,7 @@ const Calendar = ({ events, onEventClick }) => {
           </Link>
         </nav>
               </header>
-            <h1>Welcome back, {user.username}'s calendar</h1>
+            <h1 className="Greeting">Welcome back, {user.username} 🏋️</h1>
           <div className="Logout">
             <Logout />
           </div>
