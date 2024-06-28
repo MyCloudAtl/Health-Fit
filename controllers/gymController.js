@@ -66,10 +66,22 @@ const createGym = async (req, res) => {
     }
 };
 
+const deleteGym = async (req, res) => {
+    const { id } = req.params;
+    try {
+        // Logic to delete user by ID from MongoDB
+        await Gym.findByIdAndDelete(id);
+        res.status(200).send({ message: 'User deleted successfully' });
+    } catch (error) {
+        res.status(500).send({ message: 'Error deleting user', error });
+    }
+};
+
 module.exports = {
     getGyms,
     getGym,
     createGym,
     getGymByUserId,
-    updateGym
+    updateGym,
+    deleteGym
 }

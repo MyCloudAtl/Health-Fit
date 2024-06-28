@@ -73,7 +73,7 @@ app.put('/nutrition/:id', nutritionController.updateNutrition)
 app.put('/gym/:id', gymController.updateGym)
 
 app.delete('/nutrition/:id', nutritionController.deleteNutrition)
-
+app.delete('/gym/:id', gymController.deleteGym)
 
 // //session setup
 // app.use(session({
