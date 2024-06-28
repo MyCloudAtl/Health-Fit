@@ -127,11 +127,11 @@ const deleteNutrition = async (req, res) => {
         if (erasedObject) {
             return res.status(200).send("Nutrition deleted");
         }
-        throw new Error("Nutrition not found and can't be deleted");
+        // throw new Error("Nutrition not found and can't be deleted");
     } catch (error) {
-        if (error.name === 'CastError' && error.kind === 'ObjectId') {
-            return res.status(404).send(`That Nutrition doesn't exist`)
-        }
+        // if (error.name === 'CastError' && error.kind === 'ObjectId') {
+        //     return res.status(404).send(`That Nutrition doesn't exist`)
+        // }
         return res.status(500).send(error.message);
     }
 }
