@@ -13,71 +13,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-// function MyVerticallyCenteredModal({ show, onHide, event }) {
-//   return (
-//     <Modal
-//       show={show}
-//       onHide={onHide}
-//       size="lg"
-//       aria-labelledby="contained-modal-title-vcenter"
-//       centered
-//     >
-//       <Modal.Header closeButton>
-//         <Modal.Title id="contained-modal-title-vcenter">
-//           Daily Log
-//         </Modal.Title>
-//       </Modal.Header>
-//       <Modal.Body>
-//         {event ? (
-//           <>
-//             {event.type === 'gym' && (
-//               <>
-//                 <h3>Gym</h3>
-//                 <h5>Cardio</h5>
-//                 <p>Activity: {event.data.cardioActivity}</p>
-//                 <p>Heart Rate: {event.data.cardioHeartRate}</p>
-//                 <p>Time Spent: {event.data.cardioTimeSpent}</p>
-//                 <h5>Stretches</h5>
-//                 <p>Activity: {event.data.stretchActivity}</p>
-//                 <p>Flexibility Rate: {event.data.stretchFlexibilityRate}</p>
-//                 <p>Time Spent: {event.data.stretchTimeSpent}</p>
-//                 <h5>Weights</h5>
-//                 <p>Activity: {event.data.weightsActivity}</p>
-//                 <p>Reps: {event.data.weightsReps}</p>
-//                 <p>Sets: {event.data.weightsSets}</p>
-//                 <p>Time Spent: {event.data.weightsSets}</p>
-//               </>
-//             )}
-//             {event.type === 'nutrition' && (
-//               <>
-//                 <h3>Nutrition</h3>
-//                 <h5>Drink</h5>
-//                 <p>Type: {event.data.drink}</p>
-//                 <p>Oz: {event.data.drinkOunces}</p>
-//                 <p>Time: {event.data.drinkTime}</p>
-//                 <p>Calories: {event.data.drinkCalories}</p>
-//                 <h5>Meal</h5>
-//                 <p>Type: {event.data.meal}</p>
-//                 <p>Oz: {event.data.mealOunces}</p>
-//                 <p>Time: {event.data.mealTime}</p>
-//                 <p>Calories: {event.data.mealCalories}</p>
-//                 <h5>Snack</h5>
-//                 <p>Type: {event.data.snack}</p>
-//                 <p>Oz: {event.data.snackOunces}</p>
-//                 <p>Time: {event.data.snackTime}</p>
-//               </>
-//             )}
-//           </>
-//         ) : (
-//           <p>No data available.</p>
-//         )}
-//       </Modal.Body>
-//       <Modal.Footer>
-//         <Button onClick={onHide}>Close</Button>
-//       </Modal.Footer>
-//     </Modal>
-//   );
-// }
 function MyVerticallyCenteredModal({ show, onHide, event }) {
   const [editedEvent, setEditedEvent] = useState(null);
 
@@ -226,7 +161,7 @@ function App() {
         }));
 
         const nutritionEvents = nutritionRes.data.map(n => ({
-          title: `Meal: ${n.meal} Snack: ${n.snack} Drink: ${n.drink}`,
+          title: `Drink: ${n.drink} Meal: ${n.meal} Snack: ${n.snack}`,
           start: new Date(n.date),
           end: new Date(n.date),
           type: 'nutrition',
@@ -281,19 +216,6 @@ const addGym = (newGym) => {
 
   return (
     <div className="Main">
-      {/* <header>
-        <nav className='header'>
-          <Link to="/">
-            <button>Home</button>
-          </Link>
-          <Link to="/nutrition">
-            <button>Nutrition</button>
-          </Link>
-          <Link to="/gym">
-            <button>Gym</button>
-          </Link>
-        </nav>
-      </header> */}
       <main>
         <Routes>
           <Route path="/" element={<Home currentUser={currentUser} />} />

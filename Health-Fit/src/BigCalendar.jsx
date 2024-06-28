@@ -11,7 +11,6 @@ import Logout from './components/Logout'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import BMI from './components/BMI'
 
 
 const locales = {

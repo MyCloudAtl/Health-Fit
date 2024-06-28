@@ -14,31 +14,16 @@ const Gym = () => {
   const [cardioHeartRate, setCardioHeartRate] = useState('')
   const [cardioTimeSpent, setCardioTimeSpent] = useState('')
   const [stretchActivity, setStretchActivity] = useState('')
-  const [stretchFlexibiltyRate, setStretchFlexibiltyRate] = useState('')
+  const [stretchFlexibilityRate, setStretchFlexibilityRate] = useState('')
   const [stretchTimeSpent, setStretchTimeSpent] = useState('')
   const [weightsActivity, setWeightsActivity] = useState('')
   const [weightsReps, setWeightsReps] = useState('')
   const [weightsSets, setWeightsSets] = useState('')
   const [weightsTimeSpent, setWeightsTimeSpent] = useState('')
   const [loading, setLoading] = useState(true)
-  const [date, setDate] = useState('')
-    let navigate= useNavigate()
+  const [date, setDate] = useState(new Date())
+  let navigate= useNavigate()
 
- 
-
-  //   const newGym = {
-  //     user_id,
-  //     cardioActivity,
-  //     cardioHeartRate,
-  //     cardioTimeSpent,
-  //     stretchActivity,
-  //     stretchFlexibiltyRate,
-  //     stretchTimeSpent,
-  //     weightsActivity,
-  //     weightsReps,
-  //     weightsSets,
-  //     weightsTimeSpent,
-  // };
 
   useEffect(() => {
     const getUser = async () => {
@@ -56,51 +41,6 @@ const Gym = () => {
     getUser();
     
 }, []);
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     const newGym = {
-//       user_id,
-//       cardioActivity,
-//       cardioHeartRate,
-//       cardioTimeSpent,
-//       stretchActivity,
-//       stretchFlexibiltyRate,
-//       stretchTimeSpent,
-//       weightsActivity,
-//       weightsReps,
-//       weightsSets,
-//       weightsTimeSpent,
-//       date
-//   };
-
-//     if (currentUser) {
-//         newGym.user_id = currentUser._id;
-//     }
-
-//     try {
-//         const response = await axios.post('http://localhost:3001/gyms', newGym);
-//         navigate('/calendar');
-//     } catch (error) {
-//         console.log('error')
-//     }
-// };
-
-  //   try {
-  //     // Send newGym data to backend (assuming /api/gyms endpoint)
-  //     await axios.post('/gyms', newGym);
-
-  //     // Update local state and events
-  //     addGym(newGym);
-
-  //     // Redirect to calendar page after submission
-  //     navigate('/calendar');
-  //   } catch (error) {
-  //     console.error('Error adding gym data:', error);
-  //     // Handle error, show message to user, etc.
-  //   }
-  // };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -111,7 +51,7 @@ const Gym = () => {
       cardioHeartRate,
       cardioTimeSpent,
       stretchActivity,
-      stretchFlexibiltyRate,
+      stretchFlexibilityRate,
       stretchTimeSpent,
       weightsActivity,
       weightsReps,
@@ -120,7 +60,9 @@ const Gym = () => {
       date
   };
 
-  
+  if (currentUser) {
+            newGym.user_id = currentUser._id;
+        }
 
     try {
         const response = await axios.post('http://localhost:3001/gyms', newGym);
@@ -128,6 +70,7 @@ const Gym = () => {
     } catch (error) {
         console.log('error')
     }
+    window.location.reload()
 };
 
 if (loading) {
@@ -146,7 +89,7 @@ return (
           <input type="text" value={cardioTimeSpent}  onChange={(e) => setCardioTimeSpent(e.target.value)}  name={'cardioTimeSpent'} placeholder={'timeSpent'} />
           <h2>Stretches</h2>
           <input type="text" value={stretchActivity}  onChange={(e) => setStretchActivity(e.target.value)}  name={'stretchActivity'} placeholder={'activity'} />
-          {/* <input type="text" value={stretchFlexibilityRate}  onChange={(e) => setStretchFlexibiltyRate(e.target.value)}  name={'stretchFlexibilityRate'} placeholder={'flexibilityRate'} /> */}
+          <input type="text" value={stretchFlexibilityRate}  onChange={(e) => setStretchFlexibilityRate(e.target.value)}  name={'stretchFlexibilityRate'} placeholder={'flexibilityRate'} />
           <input type="text" value={stretchTimeSpent}  onChange={(e) => setStretchTimeSpent(e.target.value)}  name={'stretchTimeSpent'} placeholder={'timeSpent'} />
           <h2>Weights</h2>
           <input type="text" value={weightsActivity}  onChange={(e) => setWeightsActivity(e.target.value)}  name={'weightsActivity'} placeholder={'activity'} />
