@@ -75,20 +75,6 @@ const deleteUser = async (req, res) => {
 module.exports = {
     deleteUser
 };
-//     try {
-//         const { id } = req.params;
-//         const erasedObject = await User.findByIdAndDelete(id)
-//         if (erasedObject) {
-//             return res.status(200).send("User deleted");
-//         }
-//         throw new Error("User not found and can't be deleted");
-//     } catch (error) {
-//         if (error.name === 'CastError' && error.kind === 'ObjectId') {
-//             return res.status(404).send(`That User doesn't exist`)
-//         }
-//         return res.status(500).send(error.message);
-//     }
-// }
 
 module.exports = {
     getAllUser, 

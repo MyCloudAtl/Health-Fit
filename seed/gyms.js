@@ -1,6 +1,5 @@
 const db = require('../db')
 const { Gym } = require('../models')
-const { Calendar } = require('../models')
 const { User } = require('../models')
 
 
