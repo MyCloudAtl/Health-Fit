@@ -58,21 +58,13 @@ const BMI = () => {
       <br />
       </header>
       <main>
+        //sourced from https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/english_bmi_calculator/bmi_calculator.html
       <u><h2>Adults</h2></u>
-      <h3>Women:</h3>
-      <p>Anorexia : Less than 17.50</p>	
-      <p>Underweight : 17.51-19.10</p>
-      <p>Ideal range : 19.11-25.80</p>
-      <p>Marginally overweight range : 25.81-27.30</p>
-      <p>Overweight range : 27.31-32.30</p>
-      <p>Obese range : More than 32.30</p>
-      <h3>Men:</h3>
-      <p>Anorexia : Less than 17.50</p>	
-      <p>Underweight : 17.501-20.70</p>
-      <p>Ideal range : 20.71-26.40</p>
-      <p>Marginally overweight range : 26.41-27.80</p>
-      <p>Overweight range : 27.81-31.10</p>
-      <p>Obese range : More than 31.10</p>
+      <p>Anorexia : Less than 17.5</p>	
+      <p>Underweight : 17.5 - 18.5</p>
+      <p>Ideal range : 18.5 - 24.9</p>
+      <p>Overweight range : 25 - 29.9</p>
+      <p>Obese range : More than 30.00</p>
       </main>
     </div>
   );
